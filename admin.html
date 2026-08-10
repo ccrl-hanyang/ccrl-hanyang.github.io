@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>CCRL 관리자</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--accent:#3666a0;--hd:#323643;--text:#747a87;--line:#e2e2e2;--ok:#1a7f4b;--err:#c62828}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#f4f5f7;color:var(--text);
+  font:15px/1.7 'Open Sans',"맑은 고딕",Arial,sans-serif}
+a{color:var(--accent)}
+.top{background:var(--hd);color:#fff;padding:16px 0}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+.top b{font-size:19px;letter-spacing:.02em}
+.top span{font-size:12px;color:#9aa2b1;margin-left:10px}
+.card{background:#fff;border:1px solid var(--line);padding:22px 24px;margin:22px 0}
+h2{font-size:17px;color:var(--hd);margin:0 0 4px}
+.hint{font-size:13px;color:#9a9a9a;margin:0 0 16px}
+label{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:14px 0 5px}
+input,select,textarea{width:100%;font:14px 'Open Sans',sans-serif;padding:9px 11px;
+  border:1px solid #ccc;background:#fff;color:#333}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+textarea{min-height:92px;resize:vertical;line-height:1.6}
+button{font:600 14px 'Open Sans',sans-serif;padding:11px 22px;border:0;
+  background:var(--accent);color:#fff;cursor:pointer}
+button:hover{background:#2b5385}
+button:disabled{background:#b9c2ce;cursor:not-allowed}
+button.sec{background:#fff;color:var(--hd);border:1px solid #ccc}
+button.sec:hover{background:#f2f2f2}
+button.del{background:#fff;color:var(--err);border:1px solid #e0b4b4;padding:5px 11px;font-size:12px}
+button.del:hover{background:#fdf0f0}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end;margin-top:18px}
+.row > *{flex:0 0 auto}
+.msg{margin-top:16px;padding:12px 14px;font-size:14px;display:none;white-space:pre-wrap}
+.msg.on{display:block}
+.msg.ok{background:#eaf6ee;color:var(--ok);border-left:3px solid var(--ok)}
+.msg.ng{background:#fdecec;color:var(--err);border-left:3px solid var(--err)}
+.msg.wait{background:#eef2f8;color:var(--accent);border-left:3px solid var(--accent)}
+.f2{display:grid;gap:0 16px;grid-template-columns:1fr 1fr}
+@media (max-width:640px){.f2{grid-template-columns:1fr}}
+.list{margin-top:20px;border-top:2px solid var(--accent);font-size:13.5px}
+.list__r{display:flex;gap:12px;align-items:flex-start;padding:11px 2px;border-bottom:1px solid var(--line)}
+.list__n{flex:0 0 38px;text-align:center;color:#aaa}
+.list__t{flex:1 1 auto;line-height:1.55;word-break:break-word}
+.list__b{flex:0 0 auto}
+.note{background:#fffbe9;border:1px solid #f0e2b0;padding:14px 16px;font-size:13px;margin:0 0 18px}
+.note b{color:#8a6d1a}
+code{background:#f0f0f2;padding:1px 5px;font-size:12.5px;font-family:ui-monospace,monospace}
+.tokrow{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.tokrow > div:first-child{flex:1 1 320px}
+.chk{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:400;color:var(--text);margin:12px 0 0}
+.chk input{width:auto}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap"><b>CCRL 관리자</b><span>추가한 내용은 GitHub에 커밋되어 1~2분 뒤 사이트에 반영됩니다</span></div></div>
+
+<div class="wrap">
+
+  <div class="card">
+    <h2>1. 접속</h2>
+    <p class="hint">GitHub 토큰이 암호 역할을 합니다. 브라우저에만 저장되며 이 페이지 소스에는 없습니다.</p>
+
+    <div class="note">
+      <b>토큰 만드는 법 (한 번만)</b><br>
+      GitHub → 우측 상단 프로필 → Settings → Developer settings →
+      Personal access tokens → <b>Fine-grained tokens</b> → Generate new token<br>
+      · Repository access: <b>Only select repositories</b> → 이 저장소만 선택<br>
+      · Permissions → Repository permissions → <b>Contents: Read and write</b><br>
+      · Expiration: 1년 등으로 지정<br>
+      만들어진 <code>github_pat_...</code> 문자열을 아래에 붙여넣으세요.
+      유출되면 같은 화면에서 Revoke 하면 즉시 무효화됩니다.
+    </div>
+
+    <div class="f2">
+      <div><label for="owner">조직 / 계정명</label><input id="owner" placeholder="ccrl-hanyang"></div>
+      <div><label for="repo">저장소 이름</label><input id="repo" placeholder="ccrl-hanyang.github.io"></div>
+    </div>
+    <label for="token">토큰</label>
+    <div class="tokrow">
+      <div><input id="token" type="password" placeholder="github_pat_..." autocomplete="off"></div>
+      <button class="sec" type="button" onclick="toggleTok()">보기</button>
+      <button type="button" onclick="connect()">연결 확인</button>
+    </div>
+    <div class="chk"><input type="checkbox" id="remember" checked><label for="remember" style="margin:0;font-weight:400">이 브라우저에 기억하기</label></div>
+    <div class="msg" id="m1"></div>
+  </div>
+
+  <div class="card">
+    <h2>2. 항목 추가</h2>
+    <p class="hint">번호와 “전체 N” 은 자동으로 다시 계산됩니다.</p>
+
+    <label for="target">어디에 추가할까요</label>
+    <select id="target" onchange="switchTarget()"></select>
+
+    <div id="fields"></div>
+
+    <div class="row">
+      <button type="button" id="addbtn" onclick="addItem()">추가하기</button>
+      <button class="sec" type="button" onclick="loadList()">목록 불러오기</button>
+    </div>
+    <div class="msg" id="m2"></div>
+  </div>
+
+  <div class="card">
+    <h2>3. 최근 항목 / 삭제</h2>
+    <p class="hint">“목록 불러오기” 를 누르면 현재 저장된 항목이 표시됩니다.</p>
+    <div class="list" id="list"></div>
+    <div class="msg" id="m3"></div>
+  </div>
+
+  <p style="font-size:13px;color:#9a9a9a;padding-bottom:40px">
+    이 페이지는 검색엔진에 노출되지 않도록 설정돼 있습니다. 다만 주소를 아는 사람은 열 수 있으니,
+    토큰을 공유하지 마세요. 실수로 잘못 올렸을 때는 저장소 <b>History → Revert</b> 로 되돌릴 수 있습니다.
+  </p>
+</div>
+
+<script>
+/* ── 대상 정의 ─────────────────────────────────────────── */
+var TARGETS = {
+  ij:  {file:'pub-intl-journal.html',      label:'논문 · International journal',      sec:0, cols:['text'], count:true},
+  ic:  {file:'pub-intl-conference.html',   label:'논문 · International conference',   sec:0, cols:['text'], count:true},
+  dj:  {file:'pub-domestic-journal.html',  label:'논문 · Domestic journal',           sec:0, cols:['text'], count:true},
+  dc:  {file:'pub-domestic-conference.html',label:'논문 · Domestic conference',       sec:0, cols:['text'], count:true},
+  pf:  {file:'patent.html',  label:'특허 · Foreign Patents',  sec:0, cols:['year','text'], count:false},
+  pd:  {file:'patent.html',  label:'특허 · Domestic Patents', sec:1, cols:['year','text'], count:false},
+  pp:  {file:'patent.html',  label:'특허 · 출원 완료',         sec:2, cols:['year','text'], count:false},
+  pjo: {file:'project.html', label:'과제 · Ongoing',   sec:0, cols:['pj','pd','og'], count:true},
+  pjc: {file:'project.html', label:'과제 · Completed', sec:1, cols:['pj','pd','og'], count:true},
+  no:  {file:'notice.html',  label:'게시판 · Notice', sec:0, cols:['date','text'], count:true},
+  ne:  {file:'news.html',    label:'게시판 · News',   sec:0, cols:['date','text'], count:true}
+};
+
+var FIELDS = {
+  text: {ko:'내용', el:'textarea', ph:'저자, "논문 제목," 학술지 이름, vol. 00, pp. 000-000, Mon. 2026.'},
+  year: {ko:'연도', el:'input', ph:'2026'},
+  date: {ko:'작성일', el:'input', ph:'2026-09-01'},
+  pj:   {ko:'연구과제', el:'textarea', ph:'과제 이름'},
+  pd:   {ko:'연구기간', el:'input', ph:'2026.09.01 ~ 2029.08.31'},
+  og:   {ko:'협약기관', el:'input', ph:'한국연구재단'}
+};
+
+var CLS = {text:'', year:'y', date:'y', pj:'pj', pd:'pd', og:'og'};
+
+/* ── 상태 ─────────────────────────────────────────────── */
+var S = {owner:'', repo:'', token:'', ok:false};
+var LS = 'ccrl_admin_v1';
+
+function $(id){ return document.getElementById(id); }
+function say(id, text, kind){
+  var e = $(id);
+  e.textContent = text;
+  e.className = 'msg on ' + (kind || 'wait');
+}
+function hide(id){ $(id).className = 'msg'; }
+function esc(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function toggleTok(){
+  var t = $('token');
+  t.type = t.type === 'password' ? 'text' : 'password';
+}
+
+/* ── UTF-8 안전 base64 ─────────────────────────────────── */
+function b64encode(str){
+  var bytes = new TextEncoder().encode(str), bin = '';
+  for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin);
+}
+function b64decode(b64){
+  var bin = atob(b64.replace(/\s/g, '')), bytes = new Uint8Array(bin.length);
+  for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return new TextDecoder('utf-8').decode(bytes);
+}
+
+/* ── GitHub API ───────────────────────────────────────── */
+function api(path, opt){
+  opt = opt || {};
+  opt.headers = Object.assign({
+    'Authorization': 'Bearer ' + S.token,
+    'Accept': 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28'
+  }, opt.headers || {});
+  return fetch('https://api.github.com/repos/' + S.owner + '/' + S.repo + path, opt)
+    .then(function (r) {
+      return r.json().catch(function(){ return {}; }).then(function (j) {
+        if (!r.ok) {
+          var m = j.message || ('HTTP ' + r.status);
+          if (r.status === 401) m = '토큰이 잘못되었거나 만료되었습니다.';
+          if (r.status === 403) m = '권한이 없습니다. 토큰에 Contents: Read and write 권한이 있는지 확인하세요.';
+          if (r.status === 404) m = '저장소나 파일을 찾을 수 없습니다. 계정명과 저장소 이름을 확인하세요.';
+          if (r.status === 409) m = '다른 곳에서 파일이 먼저 바뀌었습니다. 목록을 다시 불러온 뒤 시도하세요.';
+          throw new Error(m);
+        }
+        return j;
+      });
+    });
+}
+function getFile(path){
+  return api('/contents/' + encodeURIComponent(path) + '?ref=main&t=' + Date.now())
+    .then(function (j) { return {text: b64decode(j.content), sha: j.sha}; });
+}
+function putFile(path, text, sha, message){
+  return api('/contents/' + encodeURIComponent(path), {
+    method: 'PUT',
+    body: JSON.stringify({message: message, content: b64encode(text), sha: sha, branch: 'main'})
+  });
+}
+
+/* ── HTML 안의 표 찾기 ─────────────────────────────────── */
+function tbodies(html){
+  var out = [], re = /<tbody>([\s\S]*?)<\/tbody>/g, m;
+  while ((m = re.exec(html))) out.push({start: m.index + '<tbody>'.length, end: m.index + m[0].length - '</tbody>'.length, inner: m[1]});
+  return out;
+}
+function splitRows(inner){
+  return (inner.match(/<tr>[\s\S]*?<\/tr>/g) || []);
+}
+function renumber(rows){
+  var n = rows.length;
+  return rows.map(function (r, i) {
+    return r.replace(/<td class="n">\s*\d*\s*<\/td>/, '<td class="n">' + (n - i) + '</td>');
+  });
+}
+function updateCount(html, tb, n){
+  // 해당 표 앞쪽에서 가장 가까운 "전체 N" 을 갱신
+  var before = html.slice(0, tb.start);
+  var idx = before.lastIndexOf('전체 ');
+  if (idx < 0) return html;
+  var tail = html.slice(idx);
+  return html.slice(0, idx) + tail.replace(/전체\s*\d+/, '전체 ' + n);
+}
+
+function buildRow(cfg, vals){
+  var cells = ['<td class="n">0</td>'];
+  cfg.cols.forEach(function (c) {
+    var cl = CLS[c];
+    cells.push('<td' + (cl ? ' class="' + cl + '"' : '') + '>' + esc(vals[c]) + '</td>');
+  });
+  return '        <tr>' + cells.join('') + '</tr>';
+}
+function rowText(row){
+  var tds = row.match(/<td[^>]*>([\s\S]*?)<\/td>/g) || [];
+  return tds.slice(1).map(function (t) {
+    return t.replace(/<[^>]+>/g, '').replace(/&quot;/g, '"').replace(/&amp;/g, '&')
+            .replace(/&lt;/g, '<').replace(/&gt;/g, '>').trim();
+  }).filter(Boolean).join('  ·  ');
+}
+
+/* ── 화면 ─────────────────────────────────────────────── */
+function initSelect(){
+  var sel = $('target');
+  Object.keys(TARGETS).forEach(function (k) {
+    var o = document.createElement('option');
+    o.value = k; o.textContent = TARGETS[k].label;
+    sel.appendChild(o);
+  });
+  switchTarget();
+}
+function switchTarget(){
+  var cfg = TARGETS[$('target').value], box = $('fields');
+  box.innerHTML = '';
+  cfg.cols.forEach(function (c) {
+    var f = FIELDS[c], id = 'f_' + c;
+    var lab = document.createElement('label');
+    lab.setAttribute('for', id); lab.textContent = f.ko;
+    var el = document.createElement(f.el);
+    el.id = id; el.placeholder = f.ph;
+    if (c === 'date') el.value = new Date().toISOString().slice(0, 10);
+    box.appendChild(lab); box.appendChild(el);
+  });
+  $('list').innerHTML = '';
+  hide('m2'); hide('m3');
+}
+
+/* ── 동작 ─────────────────────────────────────────────── */
+function readConn(){
+  S.owner = $('owner').value.trim();
+  S.repo = $('repo').value.trim();
+  S.token = $('token').value.trim();
+  return S.owner && S.repo && S.token;
+}
+function connect(){
+  if (!readConn()) { say('m1', '계정명, 저장소 이름, 토큰을 모두 입력하세요.', 'ng'); return; }
+  say('m1', '확인 중...', 'wait');
+  api('').then(function (j) {
+    S.ok = true;
+    say('m1', '연결됨: ' + j.full_name + '  (기본 브랜치 ' + j.default_branch + ')', 'ok');
+    if ($('remember').checked) {
+      try { localStorage.setItem(LS, JSON.stringify({owner:S.owner, repo:S.repo, token:S.token})); } catch (e) {}
+    } else {
+      try { localStorage.removeItem(LS); } catch (e) {}
+    }
+    if (j.default_branch !== 'main') {
+      say('m1', '연결은 됐지만 기본 브랜치가 "' + j.default_branch + '" 입니다. 이 페이지는 main 기준이라 수정이 필요합니다.', 'ng');
+    }
+  }).catch(function (e) {
+    S.ok = false;
+    say('m1', e.message, 'ng');
+  });
+}
+
+function addItem(){
+  if (!S.ok && !readConn()) { say('m2', '먼저 위에서 연결 확인을 해주세요.', 'ng'); return; }
+  var key = $('target').value, cfg = TARGETS[key], vals = {}, missing = [];
+  cfg.cols.forEach(function (c) {
+    vals[c] = ($('f_' + c) || {}).value || '';
+    if (!vals[c].trim()) missing.push(FIELDS[c].ko);
+  });
+  if (missing.length) { say('m2', '비어 있는 항목: ' + missing.join(', '), 'ng'); return; }
+
+  $('addbtn').disabled = true;
+  say('m2', '저장 중...', 'wait');
+
+  getFile(cfg.file).then(function (f) {
+    var tbs = tbodies(f.text);
+    if (!tbs[cfg.sec]) throw new Error('대상 표를 찾지 못했습니다 (' + cfg.file + ').');
+    var tb = tbs[cfg.sec];
+    var rows = splitRows(tb.inner);
+    rows.unshift(buildRow(cfg, vals));
+    rows = renumber(rows);
+    var newInner = '\n' + rows.join('\n') + '\n        ';
+    var out = f.text.slice(0, tb.start) + newInner + f.text.slice(tb.end);
+    if (cfg.count) out = updateCount(out, {start: tb.start}, rows.length);
+
+    var first = (vals[cfg.cols[cfg.cols.length - 1]] || '').slice(0, 50);
+    return putFile(cfg.file, out, f.sha, '관리자: ' + cfg.label + ' 추가 — ' + first);
+  }).then(function () {
+    say('m2', '완료. 1~2분 뒤 사이트에 반영됩니다.\n(반영이 안 보이면 Ctrl+Shift+R)', 'ok');
+    cfg.cols.forEach(function (c) { if (c !== 'date') $('f_' + c).value = ''; });
+    loadList();
+  }).catch(function (e) {
+    say('m2', '실패: ' + e.message, 'ng');
+  }).then(function () {
+    $('addbtn').disabled = false;
+  });
+}
+
+function loadList(){
+  if (!S.ok && !readConn()) { say('m3', '먼저 위에서 연결 확인을 해주세요.', 'ng'); return; }
+  var cfg = TARGETS[$('target').value];
+  say('m3', '불러오는 중...', 'wait');
+  getFile(cfg.file).then(function (f) {
+    var tbs = tbodies(f.text);
+    if (!tbs[cfg.sec]) throw new Error('대상 표를 찾지 못했습니다.');
+    var rows = splitRows(tbs[cfg.sec].inner);
+    var box = $('list');
+    box.innerHTML = '';
+    rows.slice(0, 20).forEach(function (r, i) {
+      var num = (r.match(/<td class="n">\s*(\d+)/) || [])[1] || '';
+      var d = document.createElement('div');
+      d.className = 'list__r';
+      d.innerHTML = '<div class="list__n">' + num + '</div>' +
+                    '<div class="list__t"></div>' +
+                    '<div class="list__b"><button class="del" type="button">삭제</button></div>';
+      d.querySelector('.list__t').textContent = rowText(r);
+      d.querySelector('button').onclick = function () { delItem(i, rowText(r)); };
+      box.appendChild(d);
+    });
+    say('m3', '전체 ' + rows.length + '건 (최근 20건 표시)', 'ok');
+  }).catch(function (e) { say('m3', e.message, 'ng'); });
+}
+
+function delItem(index, preview){
+  if (!confirm('이 항목을 삭제합니다.\n\n' + preview.slice(0, 120) + '\n\n계속하시겠습니까?')) return;
+  var cfg = TARGETS[$('target').value];
+  say('m3', '삭제 중...', 'wait');
+  getFile(cfg.file).then(function (f) {
+    var tbs = tbodies(f.text), tb = tbs[cfg.sec];
+    var rows = splitRows(tb.inner);
+    rows.splice(index, 1);
+    rows = renumber(rows);
+    var newInner = '\n' + rows.join('\n') + '\n        ';
+    var out = f.text.slice(0, tb.start) + newInner + f.text.slice(tb.end);
+    if (cfg.count) out = updateCount(out, {start: tb.start}, rows.length);
+    return putFile(cfg.file, out, f.sha, '관리자: ' + cfg.label + ' 삭제');
+  }).then(function () {
+    say('m3', '삭제 완료. 1~2분 뒤 반영됩니다.', 'ok');
+    loadList();
+  }).catch(function (e) { say('m3', '실패: ' + e.message, 'ng'); });
+}
+
+/* ── 시작 ─────────────────────────────────────────────── */
+initSelect();
+try {
+  var saved = JSON.parse(localStorage.getItem(LS) || '{}');
+  if (saved.token) {
+    $('owner').value = saved.owner || '';
+    $('repo').value = saved.repo || '';
+    $('token').value = saved.token;
+    connect();
+  }
+} catch (e) {}
+</script>
+</body>
+</html>
