@@ -3,31 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Research | CCRL — Coding and Communications Research Laboratory, Hanyang University</title>
+<title>Research | CCRL &ndash; Coding &amp; Communications Research Laboratory</title>
 <meta name="description" content="Coding and Communications Research Laboratory (CCRL), Hanyang University. Error-correcting codes, post-quantum cryptography, machine/deep learning, radar signal processing. Established 2001.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="hd">
-  <div class="wrap hd__in">
+  <div class="row hd__in">
     <a class="logo" href="index.html">
-      <b>CCRL</b>
-      <span>Coding &amp; Communications Research Lab.</span>
+      <img src="uploads/2017/06/logo_white_v2.png" alt="CCRL" width="163"
+           onerror="this.replaceWith(Object.assign(document.createElement('b'),{innerHTML:'CCRL<i>CODING &amp; COMMUNICATIONS RESEARCH LAB.</i>'}))">
     </a>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
     <nav class="nav" id="nav" aria-label="Main menu">
       <ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="introduction.html">Introduction</a></li>
-        <li class="on"><a href="research.html">Research</a></li>
-        <li class="has"><a href="professor.html">People</a><ul class="sub"><li><a href="professor.html">Professor</a></li><li><a href="students.html">Students</a></li><li><a href="alumni.html">Alumni</a></li></ul></li>
-        <li class="has"><a href="pub-intl-journal.html">Publication</a><ul class="sub"><li><a href="pub-intl-journal.html">International journal</a></li><li><a href="pub-intl-conference.html">International conference</a></li><li><a href="pub-domestic-journal.html">Domestic journal</a></li><li><a href="pub-domestic-conference.html">Domestic conference</a></li><li><a href="patent.html">Patent</a></li></ul></li>
-        <li><a href="project.html">Project</a></li>
+        <li><a href="index.html">Main</a></li>
+        <li class="on"><a href="introduction.html">About lab</a><ul class="sub"><li><a href="introduction.html">Introduction</a></li><li><a href="research.html" class="on">Research</a></li><li><a href="project.html">Project</a></li></ul></li>
+        <li><a href="professor.html">Member</a><ul class="sub"><li><a href="professor.html">Professor</a></li><li><a href="students.html">Students</a></li><li><a href="alumni.html">Alumni</a></li></ul></li>
+        <li><a href="pub-intl-journal.html">Publication</a><ul class="sub"><li><a href="pub-intl-journal.html">International journal</a></li><li><a href="pub-intl-conference.html">International conference</a></li><li><a href="pub-domestic-journal.html">Domestic journal</a></li><li><a href="pub-domestic-conference.html">Domestic conference</a></li><li><a href="patent.html">Patent</a></li></ul></li>
+        <li><a href="notice.html">Board</a><ul class="sub"><li><a href="notice.html">Notice</a></li><li><a href="news.html">News</a></li></ul></li>
         <li><a href="location.html">Location</a></li>
       </ul>
     </nav>
@@ -35,68 +34,68 @@
 </header>
 
 <div class="ptb">
-  <div class="wrap ptb__in">
+  <div class="row ptb__in">
     <h1>Research</h1>
-    <div class="bc"><a href="index.html">Home</a><span>›</span>Research</div>
+    <div class="bc"><a href="index.html">Main</a><span>&rsaquo;</span>About lab<span>&rsaquo;</span>Research</div>
   </div>
 </div>
 
 <div class="main" id="main">
-  <div class="wrap">
+  <div class="row">
     <div class="sec plain">
 <h3><strong>Error-Correcting Codes</strong></h3> <strong>(A) Error-correcting schemes for wireless communication systems</strong>
 <p>In the next-generation mobile communications and Internet of Things, high error-correction capability, low computational complexity, and efficient memory management are required, and various error-correcting schemes have been studied to satisfy these requirements such as low density parity check (LDPC) codes, spatially coupled LDPC (SC-LDPC) codes, Bose-Chaudhuri-Hocquenghem (BCH codes), and polar codes.</p>
-<img src="images/research/ecc-wirelesscomm-1-600x604.png" alt="" loading="lazy" onerror="this.style.display='none'"> <strong>Upper bounds and simulated block error probabilities of uniform-quantized successive cancellation (SC) decoding and nonuniform-quantized SC decoding for polar codes over AWGN channel</strong>
-<img src="images/research/ecc-wirelesscomm-2.png" alt="" loading="lazy" onerror="this.style.display='none'"> <strong>Frame error rate according to decoding scheme of quasi-cyclic SC-LDPC code</strong>
+<img src="uploads/2021/04/ECC_WirelessComm_1-600x604.png" alt="" loading="lazy" onerror="this.style.display='none'"> <strong>Upper bounds and simulated block error probabilities of uniform-quantized successive cancellation (SC) decoding and nonuniform-quantized SC decoding for polar codes over AWGN channel</strong>
+<img src="uploads/2021/04/ECC_WirelessComm_2.png" alt="" loading="lazy" onerror="this.style.display='none'"> <strong>Frame error rate according to decoding scheme of quasi-cyclic SC-LDPC code</strong>
 <p><strong>(B) Error-correcting schemes for memories such as NAND flash memory and DRAM</strong></p>
 <p>In memory systems (e.g., NAND flash memory and DRAM) to which an ultra-fine process of 10 nm or less is applied, problems that degrade data reliability are caused due to many errors that occur due to rapid deterioration of channels. To solve this problem, it is necessary to research the application of error correction techniques to efficiently control errors in memory systems. In this study, we research various error correction techniques with low complexity and high reliability for the next-generation memory systems. <ul> <li>Channel modeling and analysis for various errors</li> </ul> NAND flash chip contains several planes and each plane consists of a set of blocks. A block has many pages and each page consists of many memory cells. Therefore, cell is a basic storage unit of NAND flash memory. The threshold voltage of a cell is quantized into multiple discrete levels to represent data. For MLC NAND flash memory, the left bit and the right bit of two bits are called as the most significant bit and the least significant bit, respectively.</p>
-<img src="images/research/ecc-memory-1.png" alt="" loading="lazy" onerror="this.style.display='none'"> <strong>Approximated Gaussian distributions of cell threshold voltages in an MLC NAND flash memory</strong>
+<img src="uploads/2021/04/ECC_Memory_1.png" alt="" loading="lazy" onerror="this.style.display='none'"> <strong>Approximated Gaussian distributions of cell threshold voltages in an MLC NAND flash memory</strong>
 <p>F. Sun, K. Rose, and T. Zhang, "On the use of strong BCH codes for improving multilevel NAND flash memory storage capacity,'' <em>2006 IEEE Workshop on Signal Processing Systems (SiPS): Design and Implementation,</em> vol. 15, no. 8, pp. 860-862, Aug. 2011.</p>
 <p>To represent the possible fault modes that may occur in current/future DRAM systems, error model is first described. This model covers various type of faults that arise in DRAM devices, data-bus and address-bus. Faults in DRAM subsystems are caused due to a variety of sources such as cosmic rays, circuit failure, and signal integrity.</p>
-<img src="images/research/ecc-memory-2-800x247.png" alt="" loading="lazy" onerror="this.style.display='none'"> <strong>Various faults and the corresponding error models</strong>
+<img src="uploads/2021/04/ECC_Memory_2-800x247.png" alt="" loading="lazy" onerror="this.style.display='none'"> <strong>Various faults and the corresponding error models</strong>
 <p>Yeleswarapu R, Somani AK. 2021. Addressing multiple bit/symbol errors in DRAM subsystem. PeerJ Computer Science 7: e359 https://doi.org/10.7717/peerj-cs.359 <ul> <li>Error-correcting schemes for memory systems</li> </ul> In memory systems, various error-correcting codes are applied such as BCH codes, LDPC codes, polar codes, chipkill, single device data correction (SDDC), and single-bit error correction and double-bit error detection (SECDED) code according to the requirements for code design.</p>
-<img src="images/research/ecc-memory-3-600x429.png" alt="" loading="lazy" onerror="this.style.display='none'"> <strong>Encoding scheme of CRC and even parity bits for SDDC</strong>
+<img src="uploads/2021/04/ECC_Memory_3-600x429.png" alt="" loading="lazy" onerror="this.style.display='none'"> <strong>Encoding scheme of CRC and even parity bits for SDDC</strong>
 <p><strong>(C) Blind detection/identification of error-correcting codes in a non-cooperative context</strong></p>
 <p>Error-correcting codes (ECCs) are essential to improve the reliability of digital communication systems. ECCs can detect or correct the errors by introducing and utilizing the systematic parity check bits. However, ECCs deteriorate the spectral efficiency of digital communication systems and hence it is always preferable to enhance the spectral efficiency by any means. In order to enhance the spectral efficiency, the blind detection/identification schemes of ECCs have been actively studied.</p>
-<img src="images/research/blind-detection-ecc-1-600x492.png" alt="" loading="lazy" onerror="this.style.display='none'">
+<img src="uploads/2021/04/Blind_detection_ECC_1-600x492.png" alt="" loading="lazy" onerror="this.style.display='none'">
 <p>Soonhee Kwon and Dong-Joon Shin, "Blind Classification of Error-Correcting Codes for Enhancing Spectral Efficiency of Wireless Networks," IEEE Transactions on Broadcasting, Accepted.</p>
-<img src="images/research/blind-detection-ecc-2-600x363.png" alt="" loading="lazy" onerror="this.style.display='none'">
+<img src="uploads/2021/04/Blind_detection_ECC_2-600x363.png" alt="" loading="lazy" onerror="this.style.display='none'">
 <p>Minki Song and Dong-Joon Shin, "Asymptotic Analysis of Blind Reconstruction of BCH Codes Based on Consecutive Roots of Generator Polynomials." IEEE Access, vol. 8, pp. 206514-206526, Nov. 2020.</p>
-<img src="images/research/blind-detection-ecc-3.png" alt="" loading="lazy" onerror="this.style.display='none'">
+<img src="uploads/2021/04/Blind_detection_ECC_3.png" alt="" loading="lazy" onerror="this.style.display='none'">
 <p>Soonhee Kwon and Dong-Joon Shin, "Analysis of Blind Reconstruction of BCH Codes," Entropy, Vol. 22, No. 11, pp. 1-16, Nov. 2020.</p>
-<img src="images/research/blind-detection-ecc-4-600x274.png" alt="" loading="lazy" onerror="this.style.display='none'">
+<img src="uploads/2021/04/Blind_detection_ECC_4-600x274.png" alt="" loading="lazy" onerror="this.style.display='none'">
 <p>Daemin Jo, Soonhee Kwon, and Dong-Joon Shin, "Blind Reconstruction of BCH Codes Based on Consecutive Roots of Generator Polynomials," IEEE Communications Letters, Vol. 22, No. 5, pp. 894-897, Feb. 2018.</p>
 <h3><strong>Post-Quantum Cryptography</strong></h3> <strong>(A) Lattice-based post-quantum cryptography </strong>
 <p>After Google achieved quantum supremacy, various quantum algorithms such as Shor’s algorithm and Grover’s search algorithm are suggested to break cryptosystems down. However, lattice-based cryptography has resistance of quantum algorithm because it is designed from the NP lattice problem such as shortest vector problem (SVP), closest vector problem (CVP), and their approximated problems. But the dimension of lattice decides a hardness of problem, ciphertext size or key size of lattice-based cryptography is much heavy than other classical cryptography such as discrete logarithm or elliptic curve-based cryptography. Our goal is to design a more practical lattice-based cryptography.</p>
-<p><strong><img src="images/research/lattice-pqc-1-600x427.png" alt="" loading="lazy" onerror="this.style.display='none'"></strong></p>
+<p><strong><img src="uploads/2021/04/Lattice_PQC_1-600x427.png" alt="" loading="lazy" onerror="this.style.display='none'"></strong></p>
 <p>:https://www.slideshare.net/AlexandreAugustoGiron/introduction-latticebased-cryptography</p>
-<img src="images/research/lattice-pqc-2-600x346.png" alt="" loading="lazy" onerror="this.style.display='none'">
-<p>:"Analysis of Error Dependencies on NewHope," <em>IEEE Access</em>, Vol.8, pp.45443-45456, Mar. 2020</p>
+<img src="uploads/2021/04/Lattice_PQC_2-600x346.png" alt="" loading="lazy" onerror="this.style.display='none'">
+<p>:"Analysis of Error Dependencies on NewHope," <em>IEEE Access</em>, Vol.8, pp.45443-45456, Mar. 2020</p>
 <p><strong>(B) Code-based post-quantum cryptography</strong></p>
 <p><strong>(C) Fully homomorphic encryption for deep learning </strong></p>
 <p>Fully homomorphic encryption (FHE) is newest research field. The FHE can calculate on ciphertext and other cryptosystems cannot. However, after operating on a FHE ciphertext, magnitude of noise grows. To handle a noise in ciphertext, a bootstrapping algorithm can reduce a noise so that it can calculate polynomial times. The first of our research is enhancing a bootstrapping algorithm and design a efficient FHE. A second of our research is applying a FHE to a deep neural network.</p>
-<img src="images/research/fhe-1-600x450.png" alt="" loading="lazy" onerror="this.style.display='none'">
+<img src="uploads/2021/04/FHE_1-600x450.png" alt="" loading="lazy" onerror="this.style.display='none'">
 <p><strong>(D) Side-channel attack and defense of post-quantum cryptographic algorithms</strong></p>
 <h3>Machine Learning/Deep Learning</h3> <strong>(A) Machine learning/Deep learning schemes for communication systems and autonomous vehicles</strong>
 <p><strong>(B) Improving the robustness of deep neural networks through feature disentanglement and error-correcting output codes </strong> <ul> <li>Feature Entanglement</li> </ul> Variational Auto Encoder (VAE) is the generative model of Deep neural network (DNN). Recently, The VAE field is interested in entanglement in feature space. Our research leverage feature entanglement to improve the performance of DNN and their robustness. Specifically, feature entanglement denotes capacity of separation between each feature. By improving feature entanglement, the DNN has a strong decision boundary for noise data. The feature entanglement is analyzed in statistics and manifold learning in our research. By improving robustness, we achieve the robust DNN that can well predict noise data such as additive noise, crops, rotation, various transform, and adversarial attack. Also, the robust DNN guarantee strong performance even in practical environments.</p>
-<img src="images/research/feature-entanglement-1-600x365.png" alt="" loading="lazy" onerror="this.style.display='none'"><img src="images/research/feature-entanglement-2-600x198.png" alt="" loading="lazy" onerror="this.style.display='none'"> <ul> <li>Error-Correcting Output Codes</li> </ul> Conventional one-hot encoding is an effective technique to boost performance of classical and deep neural networks based classification models. However, the existing target encoding (One-hot encoding) approaches against noisy data and adversarial attacks require significant increase in the learning capacity, thus demand higher computation power and more training data. These methosd have been shown to learn dataset bias, and failed to deliver sufficient generalization capability. So, Our goal is to design class dependent Error Correcting Output Codes (ECOC) that makes the Hamming distace between lables larger. With one-hot encoding, a larger error in single logit could alter the classification result. Whereas in our Error Correcting Output Codes a large error in a single logit alone would not alter the result, since there are still k − 1 more logits that has to agree on the decision (like error correcting codes). And we are conducting research strategically extracts the similarity between pairs of classes in a dataset and leverages on that information to obtain a error correcting output encoding such that semantically closer classes are forced to be further apart in the label space in terms of the Hamming distance. Furthermore we will do comprehensive study on the effects of our target encoding scheme on both noisy label, noisy/adversarial data.
-<img src="images/research/ecoc-1.png" alt="" loading="lazy" onerror="this.style.display='none'">
+<img src="uploads/2021/04/Feature_Entanglement_1-600x365.png" alt="" loading="lazy" onerror="this.style.display='none'"><img src="uploads/2021/04/Feature_Entanglement_2-600x198.png" alt="" loading="lazy" onerror="this.style.display='none'"> <ul> <li>Error-Correcting Output Codes</li> </ul> Conventional one-hot encoding is an effective technique to boost performance of classical and deep neural networks based classification models. However, the existing target encoding (One-hot encoding) approaches against noisy data and adversarial attacks require significant increase in the learning capacity, thus demand higher computation power and more training data. These methosd have been shown to learn dataset bias, and failed to deliver sufficient generalization capability. So, Our goal is to design class dependent Error Correcting Output Codes (ECOC) that makes the Hamming distace between lables larger. With one-hot encoding, a larger error in single logit could alter the classification result. Whereas in our Error Correcting Output Codes a large error in a single logit alone would not alter the result, since there are still k − 1 more logits that has to agree on the decision (like error correcting codes). And we are conducting research strategically extracts the similarity between pairs of classes in a dataset and leverages on that information to obtain a error correcting output encoding such that semantically closer classes are forced to be further apart in the label space in terms of the Hamming distance. Furthermore we will do comprehensive study on the effects of our target encoding scheme on both noisy label, noisy/adversarial data.
+<img src="uploads/2021/04/ECOC_1.png" alt="" loading="lazy" onerror="this.style.display='none'">
 <p><strong>(C) Analyzing and understanding the principles of learning and inference of various ML/DL models</strong></p>
 <h3>Radar Signal Processing</h3> <strong>(A) Analysis of various CFAR algorithms and derivations of optimal parameters </strong>
 <p>The constant false alarm rate (CFAR) is a detection algorithm in radar system. When an autonomous driving vehicle moves on the road, detecting neighbor cars and estimating their locations and velocity are the most important technology. The CFAR provides vehicle having false detecting probability consistently. Our goal is to design a CFAR maximizing the detection probability given sensor data.</p>
-<img src="images/research/cfar-1-400x225.png" alt="" loading="lazy" onerror="this.style.display='none'">
-<p><strong><img src="images/research/cfar-2.png" alt="" loading="lazy" onerror="this.style.display='none'"></strong></p>
+<img src="uploads/2021/04/CFAR_1-400x225.png" alt="" loading="lazy" onerror="this.style.display='none'">
+<p><strong><img src="uploads/2021/04/CFAR_2.png" alt="" loading="lazy" onerror="this.style.display='none'"></strong></p>
 <p>" 비균질 환경에서 레이더의 Constant False Alarm을 위한 가변 Scale Factor 및 성능 비교," 이승환, 신동준, JCCI 2019, 5월.</p>
 <p><strong>(B) Deep learning-based CFAR algorithms for military and commercial radar systems</strong></p>
 <p>Deep learning-based CFAR algorithm is a study to detect objects through radar signals using CNN and RNN layers. We conduct research to improve performance by using less data than existing techniques and easily control false alarm probability.</p>
-<img src="images/research/deeplearning-cfar-1-600x505.png" alt="" loading="lazy" onerror="this.style.display='none'"><img src="images/research/deeplearning-cfar-2-600x507.png" alt="" loading="lazy" onerror="this.style.display='none'">
+<img src="uploads/2021/04/Deeplearning_CFAR_1-600x505.png" alt="" loading="lazy" onerror="this.style.display='none'"><img src="uploads/2021/04/Deeplearning_CFAR_2-600x507.png" alt="" loading="lazy" onerror="this.style.display='none'">
 <p><strong>(C) Camera and radar data fusion based on multi-modal DL schemes for autonomous vehicles</strong></p>
     </div>
   </div>
 </div>
 
 <footer class="ft">
-  <div class="wrap ft__in">
+  <div class="row ft__in">
     <div>
       <h5>Coding &amp; Communications Research Lab.</h5>
       <p>607-1, 607-2, Engineering Center Annex</p>
@@ -105,8 +104,8 @@
     </div>
     <div>
       <h5>Contact</h5>
-      <p>Lab. 82-2-2292-2717</p>
-      <p>Prof. 82-2-2220-0353</p>
+      <p>Lab. 02-2292-2717</p>
+      <p>Prof. 02-2220-0353</p>
       <p><a href="mailto:djshin@hanyang.ac.kr">djshin@hanyang.ac.kr</a></p>
     </div>
     <div>
@@ -116,8 +115,8 @@
     </div>
   </div>
   <div class="cp">
-    <div class="wrap">
-      <span>&copy; 2001&ndash;2026 Coding and Communications Research Laboratory</span>
+    <div class="row">
+      <span>Copyright &copy; 2001&ndash;2026 Coding and Communications Research Laboratory</span>
       <span>Hanyang University</span>
     </div>
   </div>
