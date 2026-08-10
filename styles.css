@@ -70,7 +70,10 @@ p{margin:0 0 20px}
 }
 
 /* ── 히어로 배너 (원본: 이미지만, 글자 없음, 전체 폭) ── */
-.hero{background:var(--hd);line-height:0}
+.hero{line-height:0;min-height:clamp(200px,30vw,380px);
+  background:
+    repeating-linear-gradient(135deg,rgba(255,255,255,.03) 0 2px,transparent 2px 9px),
+    linear-gradient(120deg,#242a3a 0%,#39415a 55%,#2b3247 100%)}
 .hero img{width:100%;height:clamp(240px,40vw,520px);object-fit:cover}
 
 /* ── 좌측 서브메뉴 (원본 내부 페이지) ── */
@@ -249,3 +252,5 @@ ul.ico li::before{content:"›";position:absolute;left:5px;color:var(--accent);f
 .pager{text-align:center;margin:26px 0 0}
 .pager span{display:inline-block;min-width:26px;padding:4px 8px;background:#1e9ad6;
   color:#fff;font-size:13px}
+
+
