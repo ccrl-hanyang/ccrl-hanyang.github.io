@@ -3,532 +3,95 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>CCRL — Coding and Communications Research Laboratory, Hanyang University</title>
-<meta name="description" content="Coding and Communications Research Laboratory (CCRL) at Hanyang University. Error-correcting codes, post-quantum cryptography, machine learning, and radar signal processing.">
+<title>Home — CCRL, Hanyang University</title>
+<meta name="description" content="Coding and Communications Research Laboratory (CCRL), Hanyang University. Error-correcting codes, post-quantum cryptography, machine learning, radar signal processing. Established 2001.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --ink:#111A2B;
-  --ink-soft:#4A5666;
-  --paper:#E5E9EA;
-  --panel:#F3F5F5;
-  --rule:#C4CBCE;
-  --err:#CE2A44;
-  --fix:#0F7369;
-
-  --display:'Archivo',system-ui,sans-serif;
-  --body:'Newsreader',Georgia,serif;
-  --mono:'IBM Plex Mono',ui-monospace,monospace;
-
-  --gut:clamp(1.25rem,5vw,4rem);
-  --wide:1140px;
-}
-
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--body);
-  font-size:clamp(1rem,0.4vw + 0.95rem,1.08rem);
-  line-height:1.66;
-  -webkit-font-smoothing:antialiased;
-}
-img{max-width:100%;display:block}
-a{color:inherit}
-
-.shell{max-width:var(--wide);margin-inline:auto;padding-inline:var(--gut)}
-
-/* ---------- utility type ---------- */
-.tag{
-  font-family:var(--mono);
-  font-size:.7rem;
-  font-weight:500;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-}
-
-/* ---------- masthead ---------- */
-.masthead{
-  position:sticky;top:0;z-index:50;
-  background:var(--paper);
-  background:color-mix(in srgb,var(--paper) 88%,transparent);
-  backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--rule);
-}
-.masthead__in{
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  min-height:56px;
-}
-.mark{
-  font-family:var(--display);font-weight:800;font-size:1.05rem;
-  letter-spacing:.02em;text-decoration:none;
-}
-.mark span{color:var(--err)}
-.navlinks{display:flex;gap:clamp(.9rem,2vw,1.9rem);list-style:none;margin:0;padding:0}
-.navlinks a{
-  font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;
-  text-transform:uppercase;text-decoration:none;color:var(--ink-soft);
-  padding:.35rem 0;border-bottom:1px solid transparent;
-  transition:color .18s ease,border-color .18s ease;
-}
-.navlinks a:hover,.navlinks a:focus-visible{color:var(--ink);border-bottom-color:var(--err)}
-
-/* ---------- hero ---------- */
-.hero{padding:clamp(2.75rem,7vw,5.5rem) 0 clamp(2.5rem,6vw,4.5rem)}
-
-.bits{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(0.78rem,1fr));
-  gap:.12rem .05rem;
-  font-family:var(--mono);
-  font-size:clamp(.68rem,1.6vw,.95rem);
-  line-height:1.5;
-  color:var(--ink-soft);
-  margin-bottom:1.1rem;
-  user-select:none;
-}
-.bit{
-  text-align:center;
-  opacity:0;
-  transition:opacity .3s ease,color .45s ease,background-color .45s ease;
-}
-.bit.is-on{opacity:.55}
-.bit.is-err{
-  opacity:1;color:#fff;background:var(--err);font-weight:500;
-  border-radius:1px;
-}
-.bit.is-fix{opacity:1;color:var(--fix);background:transparent;font-weight:500}
-.bit.is-done{opacity:.85;color:var(--ink);background:transparent}
-
-.readout{
-  font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--ink-soft);
-  margin:0 0 clamp(1.5rem,4vw,2.5rem);
-  display:flex;align-items:center;gap:.6rem;
-  transition:color .3s ease;
-}
-.readout::before{
-  content:"";width:20px;height:1px;background:currentColor;flex:none;
-}
-.readout.is-err{color:var(--err)}
-.readout.is-fix{color:var(--fix)}
-
-.hero h1{
-  font-family:var(--display);
-  font-weight:800;
-  font-size:clamp(2.35rem,7.4vw,5.6rem);
-  line-height:.94;
-  letter-spacing:-.032em;
-  margin:0 0 1.35rem;
-  text-wrap:balance;
-}
-.hero h1 em{font-style:normal;color:var(--err)}
-
-.hero__meta{
-  display:flex;flex-wrap:wrap;gap:.5rem 1.4rem;
-  padding-top:1rem;border-top:1px solid var(--rule);
-  margin-bottom:1.5rem;
-}
-.hero__lede{
-  font-size:clamp(1.05rem,1.2vw + .9rem,1.35rem);
-  max-width:56ch;margin:0;color:var(--ink);
-}
-
-/* ---------- bands ---------- */
-.band{padding:clamp(3rem,7vw,5.5rem) 0;border-top:1px solid var(--rule)}
-.band--ink{background:var(--ink);color:var(--paper);border-top:none}
-.band--ink .tag{color:#8E9AAB}
-
-.band__head{margin-bottom:clamp(1.75rem,4vw,2.75rem)}
-.band__head h2{
-  font-family:var(--display);font-weight:700;
-  font-size:clamp(1.65rem,3.4vw,2.6rem);
-  letter-spacing:-.022em;line-height:1.06;
-  margin:.55rem 0 0;
-}
-
-/* ---------- research ---------- */
-.areas{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule)}
-@media (min-width:760px){.areas{grid-template-columns:1fr 1fr}}
-
-.area{
-  background:var(--panel);
-  padding:clamp(1.4rem,2.6vw,2.1rem);
-  transition:background-color .2s ease;
-}
-.area:hover{background:#fff}
-.area__tag{
-  font-family:var(--mono);font-size:.7rem;font-weight:500;
-  letter-spacing:.14em;color:var(--err);
-  display:block;margin-bottom:.55rem;
-}
-.area h3{
-  font-family:var(--display);font-weight:600;font-size:1.14rem;
-  letter-spacing:-.01em;margin:0 0 .85rem;line-height:1.25;
-}
-.area ul{margin:0;padding:0;list-style:none}
-.area li{
-  position:relative;padding-left:1.05rem;margin-bottom:.5rem;
-  font-size:.97rem;line-height:1.55;color:var(--ink-soft);
-}
-.area li::before{
-  content:"";position:absolute;left:0;top:.68em;
-  width:.42rem;height:1px;background:var(--rule);
-}
-.area li:last-child{margin-bottom:0}
-
-/* ---------- people ---------- */
-.pi{display:grid;gap:clamp(1.5rem,4vw,3rem)}
-@media (min-width:800px){.pi{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:start}}
-
-.pi__name{
-  font-family:var(--display);font-weight:700;
-  font-size:clamp(1.5rem,2.8vw,2.15rem);
-  letter-spacing:-.02em;line-height:1.1;margin:.5rem 0 .3rem;
-}
-.pi__role{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:#8E9AAB;margin:0 0 1.4rem}
-
-.dl{margin:0;font-size:.95rem}
-.dl div{
-  display:flex;gap:1rem;padding:.62rem 0;
-  border-top:1px solid rgba(255,255,255,.14);
-}
-.dl div:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
-.dl dt{
-  flex:0 0 6.5rem;font-family:var(--mono);font-size:.68rem;
-  letter-spacing:.12em;text-transform:uppercase;color:#8E9AAB;
-  padding-top:.22em;margin:0;
-}
-.dl dd{margin:0;flex:1 1 auto}
-.dl a{text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);transition:border-color .18s ease}
-.dl a:hover,.dl a:focus-visible{border-bottom-color:var(--paper)}
-
-.roster{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
-.roster li{
-  display:flex;flex-wrap:wrap;gap:.3rem 1rem;align-items:baseline;
-  padding:.8rem 0;border-bottom:1px solid var(--rule);
-}
-.roster b{font-family:var(--display);font-weight:600;font-size:1rem;letter-spacing:-.005em}
-.roster span{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
-.roster i{font-style:normal;font-size:.93rem;color:var(--ink-soft);flex:1 1 14rem}
-
-/* ---------- publications ---------- */
-.pubs{list-style:none;margin:0;padding:0;counter-reset:none}
-.pubs li{
-  padding:1.05rem 0;border-bottom:1px solid var(--rule);
-  display:grid;gap:.3rem;
-}
-.pubs li:first-child{border-top:1px solid var(--rule)}
-.pubs__venue{
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;
-  text-transform:uppercase;color:var(--err);
-}
-.pubs__title{font-family:var(--display);font-weight:600;font-size:1.04rem;letter-spacing:-.008em;line-height:1.35}
-.pubs__authors{font-size:.93rem;color:var(--ink-soft)}
-
-/* ---------- footer ---------- */
-.foot{border-top:1px solid var(--rule);padding:2.25rem 0 3rem}
-.foot__in{display:flex;flex-wrap:wrap;gap:1rem 2rem;justify-content:space-between;align-items:baseline}
-.foot p{margin:0;font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
-
-/* ---------- a11y ---------- */
-:focus-visible{outline:2px solid var(--err);outline-offset:3px}
-.skip{
-  position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);
-  padding:.7rem 1rem;font-family:var(--mono);font-size:.75rem;z-index:99;
-}
-.skip:focus{left:.5rem;top:.5rem}
-
-@media (prefers-reduced-motion:reduce){
-  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
-}
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
 <a class="skip" href="#main">Skip to content</a>
 
 <header class="masthead">
   <div class="shell masthead__in">
-    <a class="mark" href="#top">CCRL<span>.</span></a>
-    <nav aria-label="Sections">
+    <a class="mark" href="index.html">CCRL<span>.</span></a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Sections">
       <ul class="navlinks">
-        <li><a href="#research">Research</a></li>
-        <li><a href="#people">People</a></li>
-        <li><a href="#publications">Publications</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="index.html" class="is-here" aria-current="page">Home</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="people.html">People</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="alumni.html">Alumni</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
 <main id="main">
+<section class="hero shell">
+  <div class="bits" id="bits" aria-hidden="true"></div>
+  <p class="readout" id="readout">Received word</p>
+  <h1>Coding and Communications Research Laboratory<em>.</em></h1>
+  <div class="hero__meta">
+    <span class="tag">Hanyang University</span>
+    <span class="tag">School of Electronic Engineering</span>
+    <span class="tag">Established 2001</span>
+  </div>
+  <p class="hero__lede">Coding and Communications Research Laboratory was established in 2001 at Hanyang University. We analyse and design error-resilient, efficient schemes in error-correcting codes, post-quantum cryptography, and machine learning, together with the signal processing that carries them into real communication, storage, radar, cryptographic, and learning systems.</p>
+</section>
 
-  <!-- ============ HERO ============ -->
-  <section class="hero shell" id="top">
-    <div class="bits" id="bits" aria-hidden="true"></div>
-    <p class="readout" id="readout">Received word</p>
+<section class="band shell">
+  <div class="band__head">
+    <span class="tag">Research areas</span>
+    <h2>Four directions, one question: how does information survive a noisy channel?</h2>
+  </div>
+  <div class="areas">
+    <a class="area" href="research.html">
+      <span class="area__tag">ECC</span>
+      <h3>Error-correcting codes</h3>
+      <ul><li>Error-correcting schemes for wireless communication systems</li><li>Error-correcting schemes for memory, including NAND flash and DRAM</li><li>Blind detection and identification of coding schemes in non-cooperative settings</li></ul>
+    </a>
+    <a class="area" href="research.html">
+      <span class="area__tag">PQC</span>
+      <h3>Post-quantum cryptography</h3>
+      <ul><li>Lattice-based post-quantum cryptography</li><li>Code-based post-quantum cryptography</li><li>Fully homomorphic encryption for deep learning</li></ul>
+    </a>
+    <a class="area" href="research.html">
+      <span class="area__tag">ML / DL</span>
+      <h3>Machine and deep learning</h3>
+      <ul><li>Learning-based methods for communication systems and autonomous vehicles</li><li>Robustness of deep networks via feature disentanglement and error-correcting output codes</li><li>Understanding how learning and inference behave across model families</li></ul>
+    </a>
+    <a class="area" href="research.html">
+      <span class="area__tag">Radar</span>
+      <h3>Radar signal processing</h3>
+      <ul><li>Analysis of CFAR algorithms and derivation of optimal parameters</li><li>Deep-learning CFAR for military and commercial radar</li><li>Camera–radar fusion with multi-modal networks for autonomous driving</li></ul>
+    </a>
+  </div>
+</section>
 
-    <h1>Coding and Communications Research Laboratory<em>.</em></h1>
-
-    <div class="hero__meta">
-      <span class="tag">Hanyang University</span>
-      <span class="tag">School of Electronic Engineering</span>
-      <span class="tag">Established 2001</span>
+<section class="band band--ink">
+  <div class="shell">
+    <div class="statbar">
+      <div><b>353</b><span>papers</span></div>
+      <div><b>85</b><span>patents</span></div>
+      <div><b>8</b><span>researchers</span></div>
+      <div><b>50</b><span>alumni</span></div>
+      <div><b>47</b><span>projects</span></div>
     </div>
-
-    <p class="hero__lede">
-      We design and analyse error-resilient, efficient schemes across error-correcting codes,
-      post-quantum cryptography, and machine learning — and the signal processing that
-      carries them into real communication, storage, radar, and cryptographic systems.
-    </p>
-  </section>
-
-  <!-- ============ RESEARCH ============ -->
-  <section class="band shell" id="research">
-    <div class="band__head">
-      <span class="tag">Research areas</span>
-      <h2>Four directions, one question: how does information survive a noisy channel?</h2>
-    </div>
-
-    <div class="areas">
-
-      <article class="area">
-        <span class="area__tag">ECC</span>
-        <h3>Error-correcting codes</h3>
-        <ul>
-          <li>Error-correcting schemes for wireless communication systems</li>
-          <li>Error-correcting schemes for memory, including NAND flash and DRAM</li>
-          <li>Blind detection and identification of coding schemes in non-cooperative settings</li>
-        </ul>
-      </article>
-
-      <article class="area">
-        <span class="area__tag">PQC</span>
-        <h3>Post-quantum cryptography</h3>
-        <ul>
-          <li>Lattice-based post-quantum cryptography</li>
-          <li>Code-based post-quantum cryptography</li>
-          <li>Fully homomorphic encryption for deep learning</li>
-          <li>Side-channel attacks and defences for post-quantum algorithms</li>
-        </ul>
-      </article>
-
-      <article class="area">
-        <span class="area__tag">ML / DL</span>
-        <h3>Machine and deep learning</h3>
-        <ul>
-          <li>Learning-based methods for communication systems and autonomous vehicles</li>
-          <li>Robustness of deep networks via feature disentanglement and error-correcting output codes</li>
-          <li>Understanding how learning and inference behave across model families</li>
-        </ul>
-      </article>
-
-      <article class="area">
-        <span class="area__tag">Radar</span>
-        <h3>Radar signal processing</h3>
-        <ul>
-          <li>Analysis of CFAR algorithms and derivation of optimal parameters</li>
-          <li>Deep-learning CFAR for military and commercial radar</li>
-          <li>Camera–radar fusion with multi-modal networks for autonomous driving</li>
-        </ul>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ============ PEOPLE ============ -->
-  <section class="band band--ink" id="people">
-    <div class="shell">
-      <div class="band__head">
-        <span class="tag">Principal investigator</span>
-      </div>
-
-      <div class="pi">
-        <div>
-          <h2 class="pi__name">Dong-Joon Shin</h2>
-          <p class="pi__role">Professor · 신동준</p>
-        </div>
-
-        <dl class="dl">
-          <div>
-            <dt>Email</dt>
-            <dd><a href="mailto:djshin@hanyang.ac.kr">djshin@hanyang.ac.kr</a></dd>
-          </div>
-          <div>
-            <dt>Phone</dt>
-            <dd>+82-2-2220-0353</dd>
-          </div>
-          <div>
-            <dt>Doctorate</dt>
-            <dd>Ph.D. in Electrical Engineering, University of Southern California</dd>
-          </div>
-          <div>
-            <dt>Before HYU</dt>
-            <dd>Member of Technical Staff, Hughes Network Systems (1999–2000)<br>Research Associate, USC (1999)</dd>
-          </div>
-          <div>
-            <dt>Teaching</dt>
-            <dd>Information theory · Linear algebra · Random processes · Channel coding · Algebraic coding theory</dd>
-          </div>
-        </dl>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ MEMBERS ============ -->
-  <!--
-    ▼ 구성원 목록. 아래 <li> 한 줄을 복사해서 이름/과정/연구주제만 바꾸면 됩니다.
-      <b>이름</b> <span>과정</span> <i>연구 주제</i>
-      졸업생은 통째로 지우거나 별도 섹션으로 옮기세요.
-  -->
-  <section class="band shell">
-    <div class="band__head">
-      <span class="tag">Members</span>
-      <h2>Graduate researchers</h2>
-    </div>
-
-    <ul class="roster">
-      <li><b>Jaesang Noh</b> <span>Ph.D. candidate</span> <i>Algebraic coding theory, secure multiparty computation</i></li>
-      <li><b>이름</b> <span>Ph.D. student</span> <i>연구 주제를 여기에</i></li>
-      <li><b>이름</b> <span>M.S. student</span> <i>연구 주제를 여기에</i></li>
-    </ul>
-  </section>
-
-  <!-- ============ PUBLICATIONS ============ -->
-  <!--
-    ▼ 논문 목록. <li> 블록을 복사해서 학회/제목/저자만 바꾸세요.
-      최신 논문이 위로 오게 정렬하는 게 일반적입니다.
-  -->
-  <section class="band shell" id="publications">
-    <div class="band__head">
-      <span class="tag">Selected publications</span>
-      <h2>Recent work</h2>
-    </div>
-
-    <ol class="pubs">
-      <li>
-        <span class="pubs__venue">학회 또는 저널 이름 · 2026</span>
-        <span class="pubs__title">논문 제목을 여기에 적으세요</span>
-        <span class="pubs__authors">저자 1, 저자 2, Dong-Joon Shin</span>
-      </li>
-      <li>
-        <span class="pubs__venue">IEEE Transactions on ... · 2025</span>
-        <span class="pubs__title">논문 제목을 여기에 적으세요</span>
-        <span class="pubs__authors">저자 1, Dong-Joon Shin</span>
-      </li>
-    </ol>
-  </section>
-
-  <!-- ============ CONTACT ============ -->
-  <section class="band shell" id="contact">
-    <div class="band__head">
-      <span class="tag">Contact</span>
-      <h2>Find us</h2>
-    </div>
-    <p style="max-width:52ch;margin:0 0 1.25rem">
-      Prospective graduate students interested in coding theory, cryptography, or
-      learning-based signal processing are welcome to get in touch directly.
-    </p>
-    <dl class="dl" style="max-width:40rem">
-      <div style="border-top-color:var(--rule)">
-        <dt style="color:var(--ink-soft)">Address</dt>
-        <dd>222 Wangsimni-ro, Seongdong-gu, Seoul 04763, Republic of Korea</dd>
-      </div>
-      <div style="border-top-color:var(--rule);border-bottom-color:var(--rule)">
-        <dt style="color:var(--ink-soft)">Email</dt>
-        <dd><a href="mailto:djshin@hanyang.ac.kr" style="border-bottom-color:var(--rule)">djshin@hanyang.ac.kr</a></dd>
-      </div>
-    </dl>
-  </section>
-
+  </div>
+</section>
 </main>
 
 <footer class="foot">
   <div class="shell foot__in">
     <p>Coding and Communications Research Laboratory</p>
-    <p>Hanyang University · Seoul</p>
+    <p>Hanyang University &middot; Seoul</p>
   </div>
 </footer>
-
-<script>
-(function () {
-  var grid = document.getElementById('bits');
-  var readout = document.getElementById('readout');
-  if (!grid) return;
-
-  var TOTAL = 176;
-  var ERRORS = [23, 51, 76, 108, 131, 159];
-  var cells = [];
-  var i;
-
-  for (i = 0; i < TOTAL; i++) {
-    var s = document.createElement('span');
-    s.className = 'bit';
-    s.textContent = Math.random() < 0.5 ? '0' : '1';
-    grid.appendChild(s);
-    cells.push(s);
-  }
-
-  var flip = function (el) {
-    el.textContent = el.textContent === '0' ? '1' : '0';
-  };
-
-  var still = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-  if (still.matches) {
-    cells.forEach(function (c) { c.classList.add('is-on'); });
-    ERRORS.forEach(function (n) { flip(cells[n]); cells[n].classList.add('is-done'); });
-    readout.textContent = ERRORS.length + ' bit errors corrected';
-    readout.classList.add('is-fix');
-    return;
-  }
-
-  // 1. the word arrives
-  cells.forEach(function (c, n) {
-    setTimeout(function () { c.classList.add('is-on'); }, 8 * n);
-  });
-
-  var arrived = 8 * TOTAL + 250;
-
-  // 2. errors are located
-  setTimeout(function () {
-    ERRORS.forEach(function (n, k) {
-      setTimeout(function () { cells[n].classList.add('is-err'); }, 90 * k);
-    });
-    readout.textContent = ERRORS.length + ' bit errors detected';
-    readout.classList.add('is-err');
-  }, arrived);
-
-  // 3. errors are corrected
-  setTimeout(function () {
-    ERRORS.forEach(function (n, k) {
-      setTimeout(function () {
-        var c = cells[n];
-        c.classList.remove('is-err');
-        c.classList.add('is-fix');
-        flip(c);
-      }, 90 * k);
-    });
-    readout.textContent = 'Corrected';
-    readout.classList.remove('is-err');
-    readout.classList.add('is-fix');
-  }, arrived + 1500);
-
-  // 4. settle
-  setTimeout(function () {
-    ERRORS.forEach(function (n) {
-      cells[n].classList.remove('is-fix');
-      cells[n].classList.add('is-done');
-    });
-  }, arrived + 3200);
-})();
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>

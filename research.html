@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research — CCRL, Hanyang University</title>
+<meta name="description" content="Coding and Communications Research Laboratory (CCRL), Hanyang University. Error-correcting codes, post-quantum cryptography, machine learning, radar signal processing. Established 2001.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="shell masthead__in">
+    <a class="mark" href="index.html">CCRL<span>.</span></a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Sections">
+      <ul class="navlinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="research.html" class="is-here" aria-current="page">Research</a></li>
+        <li><a href="people.html">People</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="alumni.html">Alumni</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<section class="banner shell">
+  <span class="tag">Research</span>
+  <h1>What we work on</h1>
+  <p class="banner__lede">Error-correcting codes sit at the centre. Cryptography, learning, and radar are where the same algebra keeps turning up.</p>
+</section>
+<section class="rblock shell">
+  <span class="area__tag">ECC</span>
+  <h2>Error-correcting codes</h2>
+  <p class="rblock__d">Codes are the reason a message survives a channel that corrupts it. We design them, and we also work the inverse problem: recovering the code itself when nobody told us which one was used.</p>
+  <ul class="rlist"><li>Error-correcting schemes for wireless communication systems</li><li>Error-correcting schemes for memory, including NAND flash and DRAM</li><li>Blind detection and identification of coding schemes in non-cooperative settings</li></ul>
+</section>
+<section class="rblock shell">
+  <span class="area__tag">PQC</span>
+  <h2>Post-quantum cryptography</h2>
+  <p class="rblock__d">Lattices and codes both give hardness assumptions no quantum algorithm is known to break. We build on them, and we attack implementations to find where the theory leaks.</p>
+  <ul class="rlist"><li>Lattice-based post-quantum cryptography</li><li>Code-based post-quantum cryptography</li><li>Fully homomorphic encryption for deep learning</li><li>Side-channel attacks and defences for post-quantum algorithms</li></ul>
+</section>
+<section class="rblock shell">
+  <span class="area__tag">ML / DL</span>
+  <h2>Machine and deep learning</h2>
+  <p class="rblock__d">Learning systems fail in ways classical estimators do not. Coding theory turns out to be a useful lens on why, and on how to make them fail less often.</p>
+  <ul class="rlist"><li>Learning-based methods for communication systems and autonomous vehicles</li><li>Robustness of deep networks via feature disentanglement and error-correcting output codes</li><li>Understanding how learning and inference behave across model families</li></ul>
+</section>
+<section class="rblock shell">
+  <span class="area__tag">Radar</span>
+  <h2>Radar signal processing</h2>
+  <p class="rblock__d">Detection under clutter is a hypothesis test with a moving threshold. We derive the optimal parameters, then ask what a network can learn that the derivation cannot express.</p>
+  <ul class="rlist"><li>Analysis of CFAR algorithms and derivation of optimal parameters</li><li>Deep-learning CFAR for military and commercial radar</li><li>Camera–radar fusion with multi-modal networks for autonomous driving</li></ul>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="shell foot__in">
+    <p>Coding and Communications Research Laboratory</p>
+    <p>Hanyang University &middot; Seoul</p>
+  </div>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
