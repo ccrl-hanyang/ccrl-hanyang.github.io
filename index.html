@@ -3,93 +3,109 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home — CCRL, Hanyang University</title>
-<meta name="description" content="Coding and Communications Research Laboratory (CCRL), Hanyang University. Error-correcting codes, post-quantum cryptography, machine learning, radar signal processing. Established 2001.">
+<title>Home | CCRL — Coding and Communications Research Laboratory, Hanyang University</title>
+<meta name="description" content="Coding and Communications Research Laboratory (CCRL), Hanyang University. Error-correcting codes, post-quantum cryptography, machine/deep learning, radar signal processing. Established 2001.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="masthead">
-  <div class="shell masthead__in">
-    <a class="mark" href="index.html">CCRL<span>.</span></a>
-    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span></button>
-    <nav class="nav" id="nav" aria-label="Sections">
-      <ul class="navlinks">
-        <li><a href="index.html" class="is-here" aria-current="page">Home</a></li>
+<header class="hd">
+  <div class="wrap hd__in">
+    <a class="logo" href="index.html">
+      <b>CCRL</b>
+      <span>Coding &amp; Communications Research Lab.</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span></button>
+    <nav class="nav" id="nav" aria-label="Main menu">
+      <ul class="menu">
+        <li class="on"><a href="index.html">Home</a></li>
+        <li><a href="introduction.html">Introduction</a></li>
         <li><a href="research.html">Research</a></li>
-        <li><a href="people.html">People</a></li>
-        <li><a href="publications.html">Publications</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="alumni.html">Alumni</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li class="has"><a href="professor.html">People</a><ul class="sub"><li><a href="professor.html">Professor</a></li><li><a href="students.html">Students</a></li><li><a href="alumni.html">Alumni</a></li></ul></li>
+        <li class="has"><a href="pub-intl-journal.html">Publication</a><ul class="sub"><li><a href="pub-intl-journal.html">International journal</a></li><li><a href="pub-intl-conference.html">International conference</a></li><li><a href="pub-domestic-journal.html">Domestic journal</a></li><li><a href="pub-domestic-conference.html">Domestic conference</a></li><li><a href="patent.html">Patent</a></li></ul></li>
+        <li><a href="project.html">Project</a></li>
+        <li><a href="location.html">Location</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<main id="main">
-<section class="hero shell">
-  <div class="bits" id="bits" aria-hidden="true"></div>
-  <p class="readout" id="readout">Received word</p>
-  <h1>Coding and Communications Research Laboratory<em>.</em></h1>
-  <div class="hero__meta">
-    <span class="tag">Hanyang University</span>
-    <span class="tag">School of Electronic Engineering</span>
-    <span class="tag">Established 2001</span>
-  </div>
-  <p class="hero__lede">Coding and Communications Research Laboratory was established in 2001 at Hanyang University. We analyse and design error-resilient, efficient schemes in error-correcting codes, post-quantum cryptography, and machine learning, together with the signal processing that carries them into real communication, storage, radar, cryptographic, and learning systems.</p>
-</section>
 
-<section class="band shell">
-  <div class="band__head">
-    <span class="tag">Research areas</span>
-    <h2>Four directions, one question: how does information survive a noisy channel?</h2>
-  </div>
-  <div class="areas">
-    <a class="area" href="research.html">
-      <span class="area__tag">ECC</span>
-      <h3>Error-correcting codes</h3>
-      <ul><li>Error-correcting schemes for wireless communication systems</li><li>Error-correcting schemes for memory, including NAND flash and DRAM</li><li>Blind detection and identification of coding schemes in non-cooperative settings</li></ul>
-    </a>
-    <a class="area" href="research.html">
-      <span class="area__tag">PQC</span>
-      <h3>Post-quantum cryptography</h3>
-      <ul><li>Lattice-based post-quantum cryptography</li><li>Code-based post-quantum cryptography</li><li>Fully homomorphic encryption for deep learning</li></ul>
-    </a>
-    <a class="area" href="research.html">
-      <span class="area__tag">ML / DL</span>
-      <h3>Machine and deep learning</h3>
-      <ul><li>Learning-based methods for communication systems and autonomous vehicles</li><li>Robustness of deep networks via feature disentanglement and error-correcting output codes</li><li>Understanding how learning and inference behave across model families</li></ul>
-    </a>
-    <a class="area" href="research.html">
-      <span class="area__tag">Radar</span>
-      <h3>Radar signal processing</h3>
-      <ul><li>Analysis of CFAR algorithms and derivation of optimal parameters</li><li>Deep-learning CFAR for military and commercial radar</li><li>Camera–radar fusion with multi-modal networks for autonomous driving</li></ul>
-    </a>
-  </div>
-</section>
 
-<section class="band band--ink">
-  <div class="shell">
-    <div class="statbar">
-      <div><b>353</b><span>papers</span></div>
-      <div><b>85</b><span>patents</span></div>
-      <div><b>8</b><span>researchers</span></div>
-      <div><b>50</b><span>alumni</span></div>
-      <div><b>47</b><span>projects</span></div>
+<div class="main" id="main">
+  <div class="wrap">
+    <div class="sec">
+      <p class="lead">Coding and Communications Research Laboratory (CCRL) was established in
+      2001 at Hanyang University.</p>
+      <p class="lead">The main research interest of CCRL is in analysis and design of
+      error-resilient and efficient schemes of error-correcting codes, post-quantum cryptography,
+      and machine/deep learning. Especially, we have been working on various aspects of signal
+      processing techniques for communication, storage, radar, cryptographic, and deep learning
+      systems.</p>
+      <p>The current research areas of CCRL can be summarized as follows.</p>
+      <ul class="rlist">
+        <li><h4>1) Error-correcting Codes (ECC)</h4><ul><li>Error-correcting schemes for wireless communication systems</li><li>Error-correcting schemes for memories such as NAND flash memory and DRAM</li><li>Blind detection/identification of error-correcting schemes in a non-cooperative context</li></ul></li>
+        <li><h4>2) Post-Quantum Cryptography (PQC)</h4><ul><li>Lattice-based post-quantum cryptography</li><li>Code based post-quantum cryptography</li><li>Fully homomorphic encryption for deep learning</li><li>Side-channel attack and defense of post-quantum cryptographic algorithms</li></ul></li>
+        <li><h4>3) Machine learning/Deep learning (ML/DL)</h4><ul><li>Machine learning/Deep learning schemes for communication systems and autonomous vehicles</li><li>Improving the robustness of deep neural networks through feature disentanglement and error-correcting output codes</li><li>Analyzing and understanding the principles of learning and inference of various ML/DL models</li></ul></li>
+        <li><h4>4) Radar Signal Processing</h4><ul><li>Analysis of various CFAR algorithms and derivations of optimal parameters</li><li>Deep learning-based CFAR algorithms for military and commercial radar systems</li><li>Camera and radar data fusion based on multi-modal DL schemes for autonomous vehicles</li></ul></li>
+      </ul>
+      <p><a href="introduction.html">Read More &rarr;</a></p>
+    </div>
+
+    <div class="sec">
+      <h2 class="t">Quick menu</h2>
+      <ul class="quick">
+        <li><a href="introduction.html">Introduction</a></li>
+        <li><a href="research.html">Research</a></li>
+        <li><a href="students.html">Members</a></li>
+        <li><a href="pub-intl-journal.html">Publication</a></li>
+        <li><a href="project.html">Project</a></li>
+        <li><a href="location.html">Location</a></li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h2 class="t">YouTube Video</h2>
+      <figure class="video">
+        <iframe src="https://www.youtube-nocookie.com/embed/i3kCXRjXsBs" title="CCRL introduction video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </figure>
+    </div>
+
+    <div class="logos"><img src="images/logos/img.png" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ph'}))"><img src="images/logos/img.jpg" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ph'}))"><img src="images/logos/bk.jpg" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ph'}))"><img src="images/logos/iitp-150x150.jpg" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ph'}))"><img src="images/logos/e1523510939103-150x150.jpg" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'ph'}))"></div>
+  </div>
+</div>
+
+<footer class="ft">
+  <div class="wrap ft__in">
+    <div>
+      <h5>Coding &amp; Communications Research Lab.</h5>
+      <p>607-1, 607-2, Engineering Center Annex</p>
+      <p>Hanyang University, 222 Wangsimni-ro</p>
+      <p>Seongdong-gu, Seoul 04763, Korea</p>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <p>Lab. 82-2-2292-2717</p>
+      <p>Prof. 82-2-2220-0353</p>
+      <p><a href="mailto:djshin@hanyang.ac.kr">djshin@hanyang.ac.kr</a></p>
+    </div>
+    <div>
+      <h5>Links</h5>
+      <p><a href="https://www.hanyang.ac.kr" target="_blank" rel="noopener">Hanyang University</a></p>
+      <p><a href="http://electronic.hanyang.ac.kr" target="_blank" rel="noopener">School of Electronic Engineering</a></p>
     </div>
   </div>
-</section>
-</main>
-
-<footer class="foot">
-  <div class="shell foot__in">
-    <p>Coding and Communications Research Laboratory</p>
-    <p>Hanyang University &middot; Seoul</p>
+  <div class="cp">
+    <div class="wrap">
+      <span>&copy; 2001&ndash;2026 Coding and Communications Research Laboratory</span>
+      <span>Hanyang University</span>
+    </div>
   </div>
 </footer>
 <script src="app.js"></script>
