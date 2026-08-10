@@ -50,7 +50,7 @@ p{margin:0 0 20px}
 .sub a.on{color:#fff;font-weight:600}
 .burger{display:none}
 
-@media (max-width:940px){
+@media (max-width:800px){
   .hd__in{flex-wrap:wrap;min-height:0;padding:14px 0}
   .burger{display:block;width:44px;height:36px;border:1px solid #4b5162;background:transparent;
     cursor:pointer;position:relative;padding:0;flex:none}
@@ -69,29 +69,35 @@ p{margin:0 0 20px}
   .sub a{padding:8px 0;border-bottom:none}
 }
 
-/* ── 히어로 배너 ── */
-.hero{position:relative;background:var(--hd);overflow:hidden}
-.hero img{width:100%;height:clamp(260px,34vw,420px);object-fit:cover;opacity:.55}
-.hero__t{position:absolute;inset:0;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;text-align:center;padding:20px}
-.hero__t h1{color:#fff;font-size:clamp(22px,3.4vw,40px);font-weight:300;
-  letter-spacing:.02em;line-height:1.3;text-shadow:0 1px 12px rgba(0,0,0,.45)}
-.hero__t p{color:#dfe4ec;margin:12px 0 0;font-size:clamp(13px,1.3vw,16px);
-  letter-spacing:.06em;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+/* ── 히어로 배너 (원본: 이미지만, 글자 없음, 전체 폭) ── */
+.hero{background:var(--hd);line-height:0}
+.hero img{width:100%;height:clamp(240px,40vw,520px);object-fit:cover}
 
-/* ── 페이지 제목 바 ── */
-.ptb{background:#f6f6f6;border-bottom:1px solid #d9dadb}
-.ptb__in{display:flex;align-items:center;justify-content:space-between;gap:15px;
-  flex-wrap:wrap;min-height:84px;padding:16px 15px}
-.ptb h1{font-size:20px;font-weight:600;letter-spacing:.02em}
-.bc{font-size:12px;color:#8c8989}
-.bc a{color:#8c8989}
-.bc span{margin:0 7px;color:#c3c3c3}
+/* ── 좌측 서브메뉴 (원본 내부 페이지) ── */
+.subnav{list-style:none;margin:0;padding:0;border:1px solid var(--line)}
+.subnav li + li{border-top:1px solid var(--line)}
+.subnav a{display:block;padding:11px 14px;font-size:13px;font-weight:600;color:var(--head)}
+.subnav a:hover{color:var(--accent)}
+.subnav a.on{color:var(--accent);box-shadow:inset -3px 0 0 var(--accent)}
+
+/* 좌측 서브메뉴 + 본문 2단 */
+.split{display:grid;gap:36px}
+@media (min-width:801px){.split{grid-template-columns:210px minmax(0,1fr)}}
+
+/* ── 탭 ── */
+.tabs{display:flex;flex-wrap:wrap;margin:0 0 34px;padding:0;list-style:none;
+  border-bottom:1px solid var(--line)}
+.tabs button{background:#ededed;border:1px solid var(--line);border-bottom:none;
+  border-top:3px solid transparent;margin:0 2px -1px 0;padding:14px 20px;cursor:pointer;
+  font-family:var(--body);font-size:15px;color:#666;line-height:1.35;max-width:200px}
+.tabs button:hover{color:var(--head)}
+.tabs button.on{background:#fff;color:var(--head);border-top-color:var(--accent)}
+.tabpane[hidden]{display:none}
 
 /* ── 본문 레이아웃 ── */
 .main{padding:55px 0 60px}
 .cols{display:grid;gap:40px}
-@media (min-width:1000px){.cols{grid-template-columns:minmax(0,1fr) 260px}}
+@media (min-width:801px){.cols{grid-template-columns:minmax(0,1fr) 230px}}
 .sec{margin-bottom:45px}
 .sec:last-child{margin-bottom:0}
 
@@ -117,12 +123,13 @@ h3.t{font-size:15px;font-weight:700;color:var(--accent);margin:30px 0 10px}
 .btn:hover{background:#333;color:#fff}
 
 /* ── 사이드바 ── */
-.side h4{font-size:17px;font-weight:400;color:var(--head);text-align:center;margin:0 0 22px}
+.side h4{font-size:22px;font-weight:400;color:var(--head);text-align:center;margin:0 0 34px}
 .side ul{list-style:none;margin:0;padding:0}
-.side li{margin-bottom:14px}
-.side li a{display:block;text-align:center;padding:14px 10px;border:1px solid var(--line);
-  font-size:13px;font-weight:700;color:var(--head);letter-spacing:.03em}
-.side li a:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.side li{margin-bottom:34px}
+.side li a{display:flex;flex-direction:column;align-items:center;gap:10px;
+  font-size:14px;font-weight:700;color:var(--head)}
+.side li a svg{width:34px;height:34px;fill:var(--accent);display:block}
+.side li a:hover{color:var(--accent)}
 
 /* ── 본문 서식 (WordPress 변환분) ── */
 .plain h2{font-size:18px;font-weight:600;padding-bottom:10px;
@@ -153,8 +160,7 @@ ul.ico li::before{content:"›";position:absolute;left:5px;color:var(--accent);f
 .pc__ph{width:150px;aspect-ratio:1;object-fit:cover;background:#f4f4f4;margin:0 0 14px}
 .pc__ph.miss{background:repeating-linear-gradient(135deg,#f0f0f0 0 7px,#fafafa 7px 14px);
   color:transparent;font-size:0}
-.pc h3{font-size:17px;font-weight:700;color:var(--head);margin:0 0 2px}
-.pc__ko{font-size:13px;color:#a0a0a0;margin:0 0 10px}
+.pc h3{font-size:15px;font-weight:400;color:var(--text);margin:0 0 14px;letter-spacing:.28em}
 .pc dl{margin:0;font-size:13px;line-height:24px}
 .pc dt{font-weight:700;color:var(--head);margin-top:8px}
 .pc dd{margin:0}
@@ -176,7 +182,9 @@ ul.ico li::before{content:"›";position:absolute;left:5px;color:var(--accent);f
 .board th{background:#fafafa;color:var(--head);font-weight:700;padding:12px 10px;
   border-bottom:1px solid #ddd;text-align:left}
 .board th.n,.board td.n{width:58px;text-align:center;color:#a8a8a8}
-.board th.y,.board td.y{width:74px;text-align:center;white-space:nowrap}
+.board th.y,.board td.y{width:96px;text-align:center;white-space:nowrap}
+.board th.t2{text-align:center}
+.bcount.top{text-align:left;margin:0 0 10px}
 .board td{padding:14px 10px;border-bottom:1px solid var(--line);vertical-align:top;line-height:26px}
 .board tbody tr:hover{background:#fbfcfd}
 .board tr[hidden]{display:none}
@@ -191,6 +199,12 @@ ul.ico li::before{content:"›";position:absolute;left:5px;color:var(--accent);f
   width:290px;max-width:100%;color:var(--head)}
 .bsearch input:focus{outline:none;border-color:var(--accent)}
 .bcount{font-size:13px;color:#a0a0a0;margin:12px 0 0;text-align:right}
+
+/* ── 지도 ── */
+.map{position:relative;padding-top:52%;margin:0 0 30px;background:#eef1f4}
+.map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.loc h3{font-size:17px;font-weight:700;color:var(--accent);margin:26px 0 4px}
+.loc p{margin:0 0 6px}
 
 /* ── 오시는 길 ── */
 .info{border-top:2px solid var(--accent);margin:0;font-size:14px}

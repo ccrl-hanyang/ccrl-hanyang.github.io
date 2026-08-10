@@ -25,3 +25,24 @@
                                  : '전체 ' + rowsAll.length + ' 건';
   });
 })();
+
+/* 탭 */
+(function () {
+  document.querySelectorAll('.tabs').forEach(function (bar) {
+    var btns = [].slice.call(bar.querySelectorAll('button'));
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        btns.forEach(function (o) {
+          o.classList.remove('on');
+          o.setAttribute('aria-selected', 'false');
+          var pn = document.getElementById(o.getAttribute('data-pane'));
+          if (pn) pn.hidden = true;
+        });
+        b.classList.add('on');
+        b.setAttribute('aria-selected', 'true');
+        var pn = document.getElementById(b.getAttribute('data-pane'));
+        if (pn) pn.hidden = false;
+      });
+    });
+  });
+})();

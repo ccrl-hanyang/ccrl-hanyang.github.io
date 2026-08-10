@@ -1,7 +1,7 @@
 @echo off
 chcp 65001 > nul
 echo.
-echo CCRL 사이트에 필요한 이미지 84개를 복사합니다.
+echo CCRL 사이트에 필요한 이미지 87개를 복사합니다.
 echo.
 set SRC=D:\Apache24\htdocs\wordpress\wp-content\uploads
 set DST=D:\ccrl-site\uploads
@@ -14,12 +14,14 @@ if not exist "%SRC%" (
 
 echo   [2017\04] 43개
 robocopy "%SRC%\2017\04" "%DST%\2017\04" "Joohg.jpg" "ahnje.jpg" "byunkb.jpg" "choics.jpg" "choijh.jpg" "choijw.jpg" "choisw.jpg" "daeminjo.jpg" "hainsu.jpg" "hongsn.jpg" "jhpaik.jpg" "jinsoo.jpg" "jungbt.jpg" "jungmin.choi_.jpg" "kangsh.jpg" "kangtw.jpg" "kimdk.jpg" "kimdy.jpg" "kimhg.jpg" "kimhj.jpg" "kimhk.jpg" "kimja.jpg" "kimjh.jpg" "kimsj.jpg" "kimsr.jpg" "leedy.jpg" "leehg.jpg" "leejy.jpg" "leess.jpg" "leesw.jpg" "namsc.jpg" "okjh.jpg" "parkjh.jpg" "parkks.jpg" "shindj.jpg" "shinjh.jpg" "shinsk.jpg" "songmk.jpg" "sunghan.jpg" "yangsg.jpg" "yongchun.jpg" "yooch.jpg" "yoonhk.jpg" /NJH /NJS /NDL /NFL /NP
-echo   [2017\05] 1개
-robocopy "%SRC%\2017\05" "%DST%\2017\05" "deep-learning2.jpg" /NJH /NJS /NDL /NFL /NP
+echo   [2017\05] 2개
+robocopy "%SRC%\2017\05" "%DST%\2017\05" "board-673013_1920.jpg" "deep-learning2.jpg" /NJH /NJS /NDL /NFL /NP
 echo   [2017\06] 1개
 robocopy "%SRC%\2017\06" "%DST%\2017\06" "logo_white_v2.png" /NJH /NJS /NDL /NFL /NP
-echo   [2018\04] 4개
-robocopy "%SRC%\2018\04" "%DST%\2018\04" "BK-로고_수정.jpg" "삼성-로고_수정.png" "한국반도체산업협회-로고.jpg" "한국연구재단-로고-e1523510939103-150x150.jpg" /NJH /NJS /NDL /NFL /NP
+echo   [2017\07] 1개
+robocopy "%SRC%\2017\07" "%DST%\2017\07" "satelietenanlage-499874_1920.jpg" /NJH /NJS /NDL /NFL /NP
+echo   [2018\04] 5개
+robocopy "%SRC%\2018\04" "%DST%\2018\04" "BK-로고_수정.jpg" "Free-Data-Image.jpg" "삼성-로고_수정.png" "한국반도체산업협회-로고.jpg" "한국연구재단-로고-e1523510939103-150x150.jpg" /NJH /NJS /NDL /NFL /NP
 echo   [2019\03] 3개
 robocopy "%SRC%\2019\03" "%DST%\2019\03" "권순희_homepage.png" "이승환_homepage2.png" "이지현.jpg" /NJH /NJS /NDL /NFL /NP
 echo   [2020\02] 1개
@@ -45,7 +47,7 @@ echo.
 echo ========================================
 echo 복사된 파일 수:
 dir /s /b "%DST%\*.*" 2>nul | find /c /v ""
-echo   ^(84 이면 정상^)
+echo   ^(87 이면 정상^)
 echo.
 echo 다음: D:\ccrl-site\uploads 폴더를 GitHub 업로드 화면에 드래그하세요.
 echo.

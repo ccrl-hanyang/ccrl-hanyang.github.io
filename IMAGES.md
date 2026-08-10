@@ -1,14 +1,15 @@
 # 이미지
 
 원본 WordPress 경로를 그대로 사용합니다 (이름 변경 없음).
-`copy-images.bat` 를 서버에서 실행하면 필요한 84개만 골라 복사합니다.
+`copy-images.bat` 를 서버에서 실행하면 필요한 87개만 골라 복사합니다.
 
 | 폴더 | 개수 |
 |---|---|
 | `uploads\2017\04` | 43 |
-| `uploads\2017\05` | 1 |
+| `uploads\2017\05` | 2 |
 | `uploads\2017\06` | 1 |
-| `uploads\2018\04` | 4 |
+| `uploads\2017\07` | 1 |
+| `uploads\2018\04` | 5 |
 | `uploads\2019\03` | 3 |
 | `uploads\2020\02` | 1 |
 | `uploads\2020\04` | 1 |
@@ -23,7 +24,10 @@
 ## 전체 목록
 
 - `uploads\2017\06\logo_white_v2.png`
+- `uploads\2018\04\Free-Data-Image.jpg`
 - `uploads\2017\05\deep-learning2.jpg`
+- `uploads\2017\05\board-673013_1920.jpg`
+- `uploads\2017\07\satelietenanlage-499874_1920.jpg`
 - `uploads\2022\07\hgjoo-150x150.jpg`
 - `uploads\2019\03\이승환_homepage2.png`
 - `uploads\2021\03\2021185051-150x150.jpg`
