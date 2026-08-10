@@ -46,15 +46,16 @@
       </ul>
     </nav>
     <div>
-  <div class="tabs" role="tablist">
+  <div class="tabwrap">
+    <div class="tabs" role="tablist">
     <button class="on" role="tab" aria-selected="true" data-pane="pane0">Error-Correcting Codes</button>
     <button class="" role="tab" aria-selected="false" data-pane="pane1">Post-Quantum Cryptography</button>
     <button class="" role="tab" aria-selected="false" data-pane="pane2">Machine Learning/Deep Learning</button>
     <button class="" role="tab" aria-selected="false" data-pane="pane3">Radar Signal Processing</button>
-  </div>
+    </div>
   <div class="tabpane" id="pane0" role="tabpanel">
-    <div class="sec plain">
-      <h2 class="t">Error-Correcting Codes</h2>
+    <div class="plain">
+      <h2 class="big">Error-Correcting Codes</h2>
       <p><strong>(A) Error-correcting schemes for wireless communication systems</strong></p>
       <p>In the next-generation mobile communications and Internet of Things, high error-correction capability, low computational complexity, and efficient memory management are required, and various error-correcting schemes have been studied to satisfy these requirements such as low density parity check (LDPC) codes, spatially coupled LDPC (SC-LDPC) codes, Bose-Chaudhuri-Hocquenghem (BCH codes), and polar codes.</p>
       <figure><img src="uploads/2021/04/ECC_WirelessComm_1-600x604.png" alt="" loading="lazy" onerror="this.style.display='none'"><figcaption><strong>Upper bounds and simulated block error probabilities of uniform-quantized successive cancellation (SC) decoding and nonuniform-quantized SC decoding for polar codes over AWGN channel</strong></figcaption></figure>
@@ -80,8 +81,8 @@
     </div>
   </div>
   <div class="tabpane" id="pane1" role="tabpanel" hidden>
-    <div class="sec plain">
-      <h2 class="t">Post-Quantum Cryptography</h2>
+    <div class="plain">
+      <h2 class="big">Post-Quantum Cryptography</h2>
       <p><strong>(A) Lattice-based post-quantum cryptography </strong></p>
       <p>After Google achieved quantum supremacy, various quantum algorithms such as Shor’s algorithm and Grover’s search algorithm are suggested to break cryptosystems down. However, lattice-based cryptography has resistance of quantum algorithm because it is designed from the NP lattice problem such as shortest vector problem (SVP), closest vector problem (CVP), and their approximated problems. But the dimension of lattice decides a hardness of problem, ciphertext size or key size of lattice-based cryptography is much heavy than other classical cryptography such as discrete logarithm or elliptic curve-based cryptography. Our goal is to design a more practical lattice-based cryptography.</p>
       <figure><img src="uploads/2021/04/Lattice_PQC_1-600x427.png" alt="" loading="lazy" onerror="this.style.display='none'"><figcaption>:https://www.slideshare.net/AlexandreAugustoGiron/introduction-latticebased-cryptography</figcaption></figure>
@@ -93,8 +94,8 @@
     </div>
   </div>
   <div class="tabpane" id="pane2" role="tabpanel" hidden>
-    <div class="sec plain">
-      <h2 class="t">Machine Learning/Deep Learning</h2>
+    <div class="plain">
+      <h2 class="big">Machine Learning/Deep Learning</h2>
       <p><strong>(A) Machine learning/Deep learning schemes for communication systems and autonomous vehicles</strong></p>
       <p><strong>(B) Improving the robustness of deep neural networks through feature disentanglement and error-correcting output codes </strong></p>
       <ul> <li>Feature Entanglement</li> </ul>
@@ -107,8 +108,8 @@
     </div>
   </div>
   <div class="tabpane" id="pane3" role="tabpanel" hidden>
-    <div class="sec plain">
-      <h2 class="t">Radar Signal Processing</h2>
+    <div class="plain">
+      <h2 class="big">Radar Signal Processing</h2>
       <p><strong>(A) Analysis of various CFAR algorithms and derivations of optimal parameters </strong></p>
       <p>The constant false alarm rate (CFAR) is a detection algorithm in radar system. When an autonomous driving vehicle moves on the road, detecting neighbor cars and estimating their locations and velocity are the most important technology. The CFAR provides vehicle having false detecting probability consistently. Our goal is to design a CFAR maximizing the detection probability given sensor data.</p>
       <img src="uploads/2021/04/CFAR_1-400x225.png" alt="" loading="lazy" onerror="this.style.display='none'">
@@ -118,6 +119,7 @@
       <img src="uploads/2021/04/Deeplearning_CFAR_1-600x505.png" alt="" loading="lazy" onerror="this.style.display='none'">
       <figure><img src="uploads/2021/04/Deeplearning_CFAR_2-600x507.png" alt="" loading="lazy" onerror="this.style.display='none'"><figcaption><strong>(C) Camera and radar data fusion based on multi-modal DL schemes for autonomous vehicles</strong></figcaption></figure>
     </div>
+  </div>
   </div>
     </div>
   </div>

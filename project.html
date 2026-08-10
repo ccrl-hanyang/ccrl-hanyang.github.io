@@ -46,27 +46,29 @@
       </ul>
     </nav>
     <div>
-  <div class="tabs" role="tablist">
+  <div class="tabwrap">
+    <div class="tabs" role="tablist">
     <button class="on" role="tab" aria-selected="true" data-pane="pane0">Ongoing</button>
     <button class="" role="tab" aria-selected="false" data-pane="pane1">Completed</button>
-  </div>
+    </div>
   <div class="tabpane" id="pane0" role="tabpanel">
     <div class="sec">
       <h2 class="t">Ongoing</h2>
       <p class="bcount top">전체 8</p>
       <table class="board">
-        <thead><tr><th class="n">번호</th><th class="t2">연구과제</th></tr></thead>
+        <thead><tr><th class="n">번호</th><th class="pj">연구과제</th><th class="pd">연구기간</th><th class="og">협약기관</th></tr></thead>
         <tbody>
-        <tr><td class="n">8</td><td>고효율의 안전한 다자간 연산과 경량 MPC 컴파일러 기술 개발을 통한 대규모 IoT 환경에서 안전한 On-Device 협력 AI 구현</td></tr>
-        <tr><td class="n">7</td><td>PQC와 QKD를 결합한 도메인 간 양자보안 시스템 개발</td></tr>
-        <tr><td class="n">6</td><td>Server용 DRAM의 고신뢰성 저복잡도 ECC알고리즘 개발</td></tr>
-        <tr><td class="n">5</td><td>차세대 반도체 전문인력 양성사업</td></tr>
-        <tr><td class="n">4</td><td>저사양 디바이스 대상 고효율 PQC 안전성 및 성능 검증 기술 개발</td></tr>
-        <tr><td class="n">3</td><td>다양한 형태의 latent space상에서의 효과적인 feature 분리를 통한 심층 신경망 성능 향상 연구</td></tr>
-        <tr><td class="n">2</td><td>(BK21 FOUR 2차년도) 융합 IT 미래인재양성 교육연구단</td></tr>
-        <tr><td class="n">1</td><td>부호-정보이론 관점을 통한 격자 기반 포스트 양자 암호의 안전성 및 구현 연구</td></tr>
+        <tr><td class="n">8</td><td class="pj">PQC와 QKD를 결합한 도메인 간 양자보안 시스템 개발</td><td class="pd">2026.04.01~2029.12.31</td><td class="og">정보통신기획평가원</td></tr>
+        <tr><td class="n">7</td><td class="pj">고효율의 안전한 다자간 연산과 경량 MPC 컴파일러 기술 개발을 통한 대규모 IoT 환경에서 안전한 On-Device 협력 AI 구현</td><td class="pd">2026.03.01 ~ 2030.02.28</td><td class="og">한국연구재단</td></tr>
+        <tr><td class="n">6</td><td class="pj">(BK21 FOUR 2차년도) 융합 IT 미래인재양성 교육연구단</td><td class="pd">2021. 03. 01 ~ 2022. 02. 28</td><td class="og">BrainKorea21 FOUR</td></tr>
+        <tr><td class="n">5</td><td class="pj">다양한 형태의 latent space상에서의 효과적인 feature 분리를 통한 심층 신경망 성능 향상 연구</td><td class="pd">2021. 03. 01 ~ 2024. 02. 29</td><td class="og">(재)한국연구재단</td></tr>
+        <tr><td class="n">4</td><td class="pj">저사양 디바이스 대상 고효율 PQC 안전성 및 성능 검증 기술 개발</td><td class="pd">2021. 04. 01 ~ 2024. 12. 31</td><td class="og">정보통신기획평가원</td></tr>
+        <tr><td class="n">3</td><td class="pj">차세대 반도체 전문인력 양성사업</td><td class="pd">2021. 03. 01 ~ 2026. 02. 28</td><td class="og">(사)한국반도체산업협회</td></tr>
+        <tr><td class="n">2</td><td class="pj">Server용 DRAM의 고신뢰성 저복잡도 ECC알고리즘 개발</td><td class="pd">2020. 09. 16 ~ 2025. 09. 15</td><td class="og">(주)삼성전자</td></tr>
+        <tr><td class="n">1</td><td class="pj">부호-정보이론 관점을 통한 격자 기반 포스트 양자 암호의 안전성 및 구현 연구</td><td class="pd">2018. 06. 01 ~ 2022. 05. 31</td><td class="og">(주)삼성전자</td></tr>
         </tbody>
       </table>
+      <div class="pager"><span>1</span></div>
     </div>
   </div>
   <div class="tabpane" id="pane1" role="tabpanel" hidden>
@@ -74,42 +76,44 @@
       <h2 class="t">Completed</h2>
       <p class="bcount top">전체 31</p>
       <table class="board">
-        <thead><tr><th class="n">번호</th><th class="t2">연구과제</th></tr></thead>
+        <thead><tr><th class="n">번호</th><th class="pj">연구과제</th><th class="pd">연구기간</th><th class="og">협약기관</th></tr></thead>
         <tbody>
-        <tr><td class="n">31</td><td>통신신호 부가 정보 분석 기술 연구 (국방 신호정보 기술 특화연구센터 SS-25)</td></tr>
-        <tr><td class="n">30</td><td>지능형 반도체 전문인력 양성사업</td></tr>
-        <tr><td class="n">29</td><td>(BK21 FOUR 1차년도) 융합 IT 미래인재양성 교육연구단</td></tr>
-        <tr><td class="n">28</td><td>(bk21 plus 8차년도)융합 IT기반 미래 가치 창조 인재양성</td></tr>
-        <tr><td class="n">27</td><td>(bk21 plus 7차년도)융합 IT기반 미래 가치 창조 인재양성</td></tr>
-        <tr><td class="n">26</td><td>자율주행차량용 레이더를 위한 레이더간 간섭에 강인한 딥러닝 기반 추적 알고리즘 연구</td></tr>
-        <tr><td class="n">25</td><td>DRAM용 고신뢰성 저복잡도 ECC 알고리즘 개발</td></tr>
-        <tr><td class="n">24</td><td>(bk21 plus 6차년도)융합 IT기반 미래 가치 창조 인재양성</td></tr>
-        <tr><td class="n">23</td><td>지상환경에 강인한 파라미터 가변형 레이다 모델 연구(국방 생존성 기술 특화 연구센터 ST-11)</td></tr>
-        <tr><td class="n">22</td><td>QPSK시스템에 적합한 새로운 4진 부호인 Delsarte-Goethals 부호의 완전 무게 분포</td></tr>
-        <tr><td class="n">21</td><td>대역폭의 통합적 활용기법을 이용한 광통신망 체계의 설계 및 분석</td></tr>
-        <tr><td class="n">20</td><td>Intelligent APT 상품화에 관한 연구</td></tr>
-        <tr><td class="n">19</td><td>차세대 고속 무선 전송 핵심 기술 연구 1~2단계</td></tr>
-        <tr><td class="n">18</td><td>차세대(4G) 이동통신 시스템 개발 1~5단계</td></tr>
-        <tr><td class="n">17</td><td>HPi 단말 모뎀용 Channel estimator 개발 및 PAPR 감소 algorithm 개발</td></tr>
-        <tr><td class="n">16</td><td>RKE (Remote Keyless Entry)용 암호/복호 알고리즘 개발</td></tr>
-        <tr><td class="n">15</td><td>차세대 이동통신 시스템용 반복복호 부호의 설계 및 분석</td></tr>
-        <tr><td class="n">14</td><td>시스템을 위한 채널코딩 기술 및 MIMO 기법 개발</td></tr>
-        <tr><td class="n">13</td><td>특정 기초 연구 1~3 단계</td></tr>
-        <tr><td class="n">12</td><td>양방향 중계채널에서의 협력 네트워크 오류 정정 기법</td></tr>
-        <tr><td class="n">11</td><td>Brain Korea 21 (1~5차)</td></tr>
-        <tr><td class="n">10</td><td>차세대 비휘발성 메모리를 위한 오류 제어 기법 설계 및 응용</td></tr>
-        <tr><td class="n">9</td><td>한양대-삼성 전자 전략산학 과제 (Low complexity high performance ECC for future NAND Flash: Turbo product codes)</td></tr>
-        <tr><td class="n">8</td><td>(BK21 PLUS 2차년도)융합 IT기반 미래가치 창조 인재양성</td></tr>
-        <tr><td class="n">7</td><td>Distributed Storage System의 저장 효율 및 성능 최적화를 위한 Coding 기법 연구</td></tr>
-        <tr><td class="n">6</td><td>텔레그램 신뢰성 분석</td></tr>
-        <tr><td class="n">5</td><td>ITRC – B4G 이동통신 시스템 네트워크 가상화 기반기술 연구 및 인력 양성</td></tr>
-        <tr><td class="n">4</td><td>모바일 저장장치용 UFS 2.0 제어기 SoC 및 대용량 FTL SW 개발 (ECC 엔진 개발)</td></tr>
-        <tr><td class="n">3</td><td>5G 이동통신 시스템을 위한 가변부호율의 SC-LDPC 부호 분석 및 연구</td></tr>
-        <tr><td class="n">2</td><td>레이더 센서 기반 수면자 2명의 생체신호 동시 측정 기술 개발</td></tr>
-        <tr><td class="n">1</td><td>XEV용 고전압 전장부품의 전기적 안정성 검증을 위한 60V-30A Bipolar 전압강하 시뮬레이터 개발</td></tr>
+        <tr><td class="n">31</td><td class="pj">(BK21 FOUR 1차년도) 융합 IT 미래인재양성 교육연구단</td><td class="pd">2020. 09. 01 ~ 2021. 02. 28</td><td class="og">BrainKorea21 FOUR</td></tr>
+        <tr><td class="n">30</td><td class="pj">지능형 반도체 전문인력 양성사업</td><td class="pd">2017. 03. 01 ~ 2021. 02. 28</td><td class="og">(사)한국반도체산업협회</td></tr>
+        <tr><td class="n">29</td><td class="pj">통신신호 부가 정보 분석 기술 연구 (국방 신호정보 기술 특화연구센터 SS-25)</td><td class="pd">2015. 11. 01 ~ 2020. 12. 31</td><td class="og">국방과학연구소</td></tr>
+        <tr><td class="n">28</td><td class="pj">DRAM용 고신뢰성 저복잡도 ECC 알고리즘 개발</td><td class="pd">2018. 07. 01 ~ 2020. 06. 30</td><td class="og">(주)삼성전자</td></tr>
+        <tr><td class="n">27</td><td class="pj">자율주행차량용 레이더를 위한 레이더간 간섭에 강인한 딥러닝 기반 추적 알고리즘 연구</td><td class="pd">2017. 03. 01. ~ 2020. 02. 29.</td><td class="og">한국연구재단</td></tr>
+        <tr><td class="n">26</td><td class="pj">(bk21 plus 7차년도)융합 IT기반 미래 가치 창조 인재양성</td><td class="pd">2019. 03. 01. ~ 2020. 02. 29.</td><td class="og">BrainKorea21 Plus</td></tr>
+        <tr><td class="n">25</td><td class="pj">(bk21 plus 8차년도)융합 IT기반 미래 가치 창조 인재양성</td><td class="pd">2020. 03. 01. ~ 2020. 08. 31.</td><td class="og">BrainKorea21 Plus</td></tr>
+        <tr><td class="n">24</td><td class="pj">(bk21 plus 6차년도)융합 IT기반 미래 가치 창조 인재양성</td><td class="pd">2018. 03. 01. ~ 2019. 02. 28.</td><td class="og">BrainKorea21 Plus</td></tr>
+        <tr><td class="n">23</td><td class="pj">지상환경에 강인한 파라미터 가변형 레이다 모델 연구(국방 생존성 기술 특화 연구센터 ST-11)</td><td class="pd">2009. 11. 11 ~ 2017. 12. 31</td><td class="og">국방과학연구소</td></tr>
+        <tr><td class="n">22</td><td class="pj">XEV용 고전압 전장부품의 전기적 안정성 검증을 위한 60V-30A Bipolar 전압강하 시뮬레이터 개발</td><td class="pd">2015. 06. 16 ~ 2017. 06. 15</td><td class="og">중소기업청</td></tr>
+        <tr><td class="n">21</td><td class="pj">레이더 센서 기반 수면자 2명의 생체신호 동시 측정 기술 개발</td><td class="pd">2016. 11. 15 ~ 2017. 04. 30</td><td class="og">LG전자</td></tr>
+        <tr><td class="n">20</td><td class="pj">5G 이동통신 시스템을 위한 가변부호율의 SC-LDPC 부호 분석 및 연구</td><td class="pd">2016. 05. 30 ~ 2017. 03. 29</td><td class="og">LG전자</td></tr>
+        <tr><td class="n">19</td><td class="pj">모바일 저장장치용 UFS 2.0 제어기 SoC 및 대용량 FTL SW 개발 (ECC 엔진 개발)</td><td class="pd">2014 .06. 01 ~ 2016. 09. 30</td><td class="og">한국산업기술진흥협회 (산업통상자원부)</td></tr>
+        <tr><td class="n">18</td><td class="pj">ITRC – B4G 이동통신 시스템 네트워크 가상화 기반기술 연구 및 인력 양성</td><td class="pd">2012. 06. 01 ~ 2015. 12. 31</td><td class="og">지식경제부</td></tr>
+        <tr><td class="n">17</td><td class="pj">텔레그램 신뢰성 분석</td><td class="pd">2015. 05. 01 ~ 2016. 01. 06</td><td class="og">철도기술연구원</td></tr>
+        <tr><td class="n">16</td><td class="pj">Distributed Storage System의 저장 효율 및 성능 최적화를 위한 Coding 기법 연구</td><td class="pd">2015. 10. 01 ~ 2015. 12. 31</td><td class="og">SK 텔레콤</td></tr>
+        <tr><td class="n">15</td><td class="pj">(BK21 PLUS 2차년도)융합 IT기반 미래가치 창조 인재양성</td><td class="pd">2014. 03. 01 ~ 2015. 02. 28</td><td class="og">융합IT 기반 미래가치 창조 인재양성 사업단</td></tr>
+        <tr><td class="n">14</td><td class="pj">한양대-삼성 전자 전략산학 과제 (Low complexity high performance ECC for future NAND Flash: Turbo product codes)</td><td class="pd">2011. 07. 01 ~ 2015. 06. 30</td><td class="og">삼성 전자</td></tr>
+        <tr><td class="n">13</td><td class="pj">차세대 비휘발성 메모리를 위한 오류 제어 기법 설계 및 응용</td><td class="pd">2009. 05 ~ 2012. 04</td><td class="og">한국연구재단</td></tr>
+        <tr><td class="n">12</td><td class="pj">Brain Korea 21 (1~5차)</td><td class="pd">2005. 03 ~ 2010. 02</td><td class="og">한국연구재단</td></tr>
+        <tr><td class="n">11</td><td class="pj">양방향 중계채널에서의 협력 네트워크 오류 정정 기법</td><td class="pd">2008. 11 ~ 2009. 10</td><td class="og">한국학술진흥재단</td></tr>
+        <tr><td class="n">10</td><td class="pj">특정 기초 연구 1~3 단계</td><td class="pd">2005. 04 ~ 2008. 03</td><td class="og">과학 기술부</td></tr>
+        <tr><td class="n">9</td><td class="pj">시스템을 위한 채널코딩 기술 및 MIMO 기법 개발</td><td class="pd">2006. 05 ~ 2007. 02</td><td class="og">삼성전자</td></tr>
+        <tr><td class="n">8</td><td class="pj">차세대 이동통신 시스템용 반복복호 부호의 설계 및 분석</td><td class="pd">2004. 07 ~ 2005. 06</td><td class="og">한국학술진흥재단</td></tr>
+        <tr><td class="n">7</td><td class="pj">RKE (Remote Keyless Entry)용 암호/복호 알고리즘 개발</td><td class="pd">2004. 04 ~ 2005. 03</td><td class="og">현대모비스</td></tr>
+        <tr><td class="n">6</td><td class="pj">HPi 단말 모뎀용 Channel estimator 개발 및 PAPR 감소 algorithm 개발</td><td class="pd">2004. 04 ~ 2005. 04</td><td class="og">삼성전자</td></tr>
+        <tr><td class="n">5</td><td class="pj">차세대(4G) 이동통신 시스템 개발 1~5단계</td><td class="pd">2003. 03 ~ 2007. 08</td><td class="og">삼성전자</td></tr>
+        <tr><td class="n">4</td><td class="pj">차세대 고속 무선 전송 핵심 기술 연구 1~2단계</td><td class="pd">2000. 08 ~ 2007. 07</td><td class="og">서울대학교 ITRC</td></tr>
+        <tr><td class="n">3</td><td class="pj">Intelligent APT 상품화에 관한 연구</td><td class="pd">2002. 07 ~ 2003. 06</td><td class="og">삼성물산 건설부문</td></tr>
+        <tr><td class="n">2</td><td class="pj">대역폭의 통합적 활용기법을 이용한 광통신망 체계의 설계 및 분석</td><td class="pd">2001. 09 ~ 2004. 08</td><td class="og">과학재단</td></tr>
+        <tr><td class="n">1</td><td class="pj">QPSK시스템에 적합한 새로운 4진 부호인 Delsarte-Goethals 부호의 완전 무게 분포</td><td class="pd">2000. 10 ~ 2001. 09</td><td class="og">한양대 신진교수 정착연구</td></tr>
         </tbody>
       </table>
+      <div class="pager"><span>1</span></div>
     </div>
+  </div>
   </div>
     </div>
   </div>
