@@ -279,3 +279,13 @@ ul.ico li::before{content:"›";position:absolute;left:5px;color:var(--accent);f
   display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .pop__foot label{font-size:13px;color:var(--text);display:flex;gap:7px;align-items:center;cursor:pointer}
 @media (max-width:600px){.pop__box{padding:26px 20px 34px}.pop__box h2{font-size:20px}}
+
+/* 구성원이 없는 그룹은 숨긴다 */
+.sec:has(> .people:empty){display:none}
+
+/* 지도 바로가기 링크 */
+.maplink{display:flex;gap:8px;flex-wrap:wrap;margin:-16px 0 26px}
+.maplink a{display:inline-block;padding:7px 14px;border:1px solid var(--line);
+  font-size:13px;font-weight:600;color:var(--head)}
+.maplink a:hover{background:var(--accent);border-color:var(--accent);color:#fff;text-decoration:none}
+.loc .tip{font-size:13.5px;color:#8a8a8a;line-height:25px;margin-top:10px}

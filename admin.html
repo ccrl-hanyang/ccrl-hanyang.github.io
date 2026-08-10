@@ -107,8 +107,55 @@ code{background:#f0f0f2;padding:1px 5px;font-size:12.5px;font-family:ui-monospac
   </div>
 
   <div class="card">
-    <h2>3. 최근 항목 / 삭제</h2>
-    <p class="hint">“목록 불러오기” 를 누르면 현재 저장된 항목이 표시됩니다.</p>
+    <h2>3. 구성원 관리</h2>
+    <p class="hint">새 구성원은 선택한 그룹의 <b>맨 아래</b>에 추가됩니다 (선배가 위). 사진도 함께 올릴 수 있습니다.</p>
+
+    <label for="mgrp">그룹</label>
+    <select id="mgrp">
+      <option>Post-Doc.</option>
+      <option selected>Ph. D. Candidates</option>
+      <option>Master Candidates</option>
+      <option>Undergraduate Students</option>
+    </select>
+
+    <div class="f2">
+      <div><label for="mname">이름 (한글)</label><input id="mname" placeholder="홍길동"></div>
+      <div><label for="mphoto">사진 (선택)</label><input id="mphoto" type="file" accept="image/*"></div>
+    </div>
+
+    <label for="mri">연구 주제 (한 줄에 하나)</label>
+    <textarea id="mri" placeholder="Lattice-based cryptography&#10;Error-correcting codes"></textarea>
+
+    <div class="row">
+      <button type="button" id="mbtn" onclick="addMember()">구성원 추가</button>
+      <button class="sec" type="button" onclick="loadMembers()">구성원 목록</button>
+    </div>
+    <div class="msg" id="m4"></div>
+    <div class="list" id="mlist"></div>
+  </div>
+
+  <div class="card">
+    <h2>4. 졸업 처리</h2>
+    <p class="hint">Students 에서 빼고 Alumni 맨 아래로 옮깁니다. 사진은 그대로 따라갑니다.</p>
+
+    <label for="gwho">졸업한 구성원</label>
+    <select id="gwho"><option value="">먼저 위의 “구성원 목록” 을 눌러주세요</option></select>
+
+    <div class="f2">
+      <div><label for="gdeg">학위</label><select id="gdeg"><option>Ph. D.</option><option>M. S.</option></select></div>
+      <div><label for="gthesis">졸업논문 제목 (선택)</label><input id="gthesis" placeholder="논문 제목"></div>
+    </div>
+
+    <label for="ghist">이력 (한 줄에 하나)</label>
+    <textarea id="ghist" placeholder="한양대학교 융합전자공학과 박사 (~2027.2)&#10;삼성전자 (2027.3~)"></textarea>
+
+    <div class="row"><button type="button" id="gbtn" onclick="graduate()">졸업 처리</button></div>
+    <div class="msg" id="m5"></div>
+  </div>
+
+  <div class="card">
+    <h2>5. 표 항목 목록 / 삭제</h2>
+    <p class="hint">위 2번에서 “목록 불러오기” 를 누르면 논문·특허·과제·공지 항목이 표시됩니다.</p>
     <div class="list" id="list"></div>
     <div class="msg" id="m3"></div>
   </div>
@@ -383,6 +430,177 @@ function delItem(index, preview){
     say('m3', '삭제 완료. 1~2분 뒤 반영됩니다.', 'ok');
     loadList();
   }).catch(function (e) { say('m3', '실패: ' + e.message, 'ng'); });
+}
+
+
+/* ── 구성원 / 졸업생 ───────────────────────────────────── */
+var STU = 'students.html', ALU = 'alumni.html';
+
+function peopleBlock(html, group){
+  var re = new RegExp('data-group="' + group.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') +
+                      '">([\\s\\S]*?)</div><!--/people-->');
+  var m = re.exec(html);
+  if (!m) return null;
+  var s0 = m.index + m[0].indexOf('">') + 2;
+  return {start: s0, end: s0 + m[1].length, inner: m[1]};
+}
+function splitCards(inner){
+  return (inner.match(/<div class="pc">[\s\S]*?<\/div>(?=\s*<div class="pc">|\s*$)/g) || [])
+         .map(function (c) { return c.replace(/\s+$/, ''); });
+}
+function spaced(n){ return n.split('').join(' '); }
+function cardName(c){ var m = /<h3>([\s\S]*?)<\/h3>/.exec(c); return m ? m[1].replace(/\s+/g, '') : ''; }
+function cardImg(c){ var m = /<img class="pc__ph" src="([^"]*)"/.exec(c); return m ? m[1] : ''; }
+
+function memberCard(name, imgPath, riLines){
+  var ri = riLines.filter(function (x) { return x.trim(); })
+                  .map(function (x) { return '<li>' + esc(x.trim()) + '</li>'; }).join('');
+  return '        <div class="pc">\n' +
+    '          <img class="pc__ph" src="' + esc(imgPath) + '" alt="' + esc(name) +
+    '" loading="lazy" onerror="this.classList.add(\'miss\');this.removeAttribute(\'src\')">\n' +
+    '          <h3>' + esc(spaced(name)) + '</h3>\n' +
+    '          <dl>\n' +
+    (ri ? '            <dt>Research Interests</dt><dd><ul>' + ri + '</ul></dd>\n' : '') +
+    '          </dl>\n' +
+    '        </div>';
+}
+
+function uploadPhoto(file){
+  if (!file) return Promise.resolve('');
+  var d = new Date();
+  var path = 'uploads/' + d.getFullYear() + '/' +
+             String(d.getMonth() + 1).padStart(2, '0') + '/' +
+             file.name.replace(/[^\w.\-\u3131-\uD79D]/g, '_');
+  return new Promise(function (res, rej) {
+    var fr = new FileReader();
+    fr.onload = function () {
+      api('/contents/' + path.split('/').map(encodeURIComponent).join('/'), {
+        method: 'PUT',
+        body: JSON.stringify({message: '관리자: 사진 추가 ' + file.name,
+                              content: fr.result.split(',')[1], branch: 'main'})
+      }).then(function () { res(path); }).catch(rej);
+    };
+    fr.onerror = function () { rej(new Error('사진을 읽을 수 없습니다.')); };
+    fr.readAsDataURL(file);
+  });
+}
+
+function addMember(){
+  if (!S.ok && !readConn()) { say('m4', '먼저 위에서 연결 확인을 해주세요.', 'ng'); return; }
+  var name = $('mname').value.trim(), group = $('mgrp').value;
+  if (!name) { say('m4', '이름을 입력하세요.', 'ng'); return; }
+  var ri = $('mri').value.split('\n'), file = $('mphoto').files[0];
+  $('mbtn').disabled = true;
+  say('m4', file ? '사진 올리는 중...' : '저장 중...', 'wait');
+
+  uploadPhoto(file).then(function (imgPath) {
+    say('m4', '구성원 추가 중...', 'wait');
+    return getFile(STU).then(function (f) {
+      var blk = peopleBlock(f.text, group);
+      if (!blk) throw new Error('그룹을 찾지 못했습니다: ' + group);
+      var cards = splitCards(blk.inner);
+      cards.push(memberCard(name, imgPath || 'uploads/none.jpg', ri));
+      var out = f.text.slice(0, blk.start) + '\n' + cards.join('\n') + '\n      ' + f.text.slice(blk.end);
+      return putFile(STU, out, f.sha, '관리자: 구성원 추가 — ' + name);
+    });
+  }).then(function () {
+    say('m4', name + ' 추가 완료. 1~2분 뒤 반영됩니다.', 'ok');
+    $('mname').value = ''; $('mri').value = ''; $('mphoto').value = '';
+    loadMembers();
+  }).catch(function (e) { say('m4', '실패: ' + e.message, 'ng'); })
+    .then(function () { $('mbtn').disabled = false; });
+}
+
+function loadMembers(){
+  if (!S.ok && !readConn()) { say('m4', '먼저 위에서 연결 확인을 해주세요.', 'ng'); return; }
+  say('m4', '불러오는 중...', 'wait');
+  getFile(STU).then(function (f) {
+    var groups = ['Post-Doc.', 'Ph. D. Candidates', 'Master Candidates', 'Undergraduate Students'];
+    var box = $('mlist'), sel = $('gwho'), total = 0;
+    box.innerHTML = ''; sel.innerHTML = '';
+    groups.forEach(function (g) {
+      var blk = peopleBlock(f.text, g);
+      if (!blk) return;
+      splitCards(blk.inner).forEach(function (c, i) {
+        var nm = cardName(c);
+        if (!nm) return;
+        total++;
+        var d = document.createElement('div');
+        d.className = 'list__r';
+        d.innerHTML = '<div class="list__n"></div><div class="list__t"></div>' +
+                      '<div class="list__b"><button class="del" type="button">삭제</button></div>';
+        d.querySelector('.list__n').textContent = i + 1;
+        d.querySelector('.list__t').textContent = nm + '  ·  ' + g;
+        d.querySelector('button').onclick = function () { delMember(g, i, nm); };
+        box.appendChild(d);
+        var o = document.createElement('option');
+        o.value = g + '||' + i; o.textContent = nm + ' (' + g + ')';
+        sel.appendChild(o);
+      });
+    });
+    if (!sel.options.length) sel.innerHTML = '<option value="">구성원이 없습니다</option>';
+    say('m4', '구성원 ' + total + '명', 'ok');
+  }).catch(function (e) { say('m4', e.message, 'ng'); });
+}
+
+function delMember(group, index, name){
+  if (!confirm(name + ' 을(를) 구성원 목록에서 삭제합니다.\n졸업이라면 아래 “졸업 처리” 를 쓰세요.\n\n계속하시겠습니까?')) return;
+  say('m4', '삭제 중...', 'wait');
+  getFile(STU).then(function (f) {
+    var blk = peopleBlock(f.text, group);
+    var cards = splitCards(blk.inner);
+    cards.splice(index, 1);
+    var inner = cards.length ? '\n' + cards.join('\n') + '\n      ' : '';
+    return putFile(STU, f.text.slice(0, blk.start) + inner + f.text.slice(blk.end), f.sha,
+                   '관리자: 구성원 삭제 — ' + name);
+  }).then(function () { say('m4', '삭제 완료.', 'ok'); loadMembers(); })
+    .catch(function (e) { say('m4', '실패: ' + e.message, 'ng'); });
+}
+
+function graduate(){
+  if (!S.ok && !readConn()) { say('m5', '먼저 위에서 연결 확인을 해주세요.', 'ng'); return; }
+  var v = $('gwho').value;
+  if (!v) { say('m5', '먼저 “구성원 목록” 을 눌러 대상을 선택하세요.', 'ng'); return; }
+  var parts = v.split('||'), group = parts[0], index = +parts[1], deg = $('gdeg').value;
+  var hist = $('ghist').value.split('\n').filter(function (x) { return x.trim(); });
+  var thesis = $('gthesis').value.trim();
+  if (!hist.length) { say('m5', '이력을 한 줄 이상 입력하세요.', 'ng'); return; }
+
+  $('gbtn').disabled = true;
+  say('m5', '처리 중...', 'wait');
+  var name = '', imgPath = '';
+
+  getFile(STU).then(function (f) {
+    var blk = peopleBlock(f.text, group);
+    if (!blk) throw new Error('그룹을 찾지 못했습니다.');
+    var cards = splitCards(blk.inner);
+    if (!cards[index]) throw new Error('대상을 찾지 못했습니다. 목록을 다시 불러오세요.');
+    name = cardName(cards[index]); imgPath = cardImg(cards[index]);
+    cards.splice(index, 1);
+    var inner = cards.length ? '\n' + cards.join('\n') + '\n      ' : '';
+    return putFile(STU, f.text.slice(0, blk.start) + inner + f.text.slice(blk.end), f.sha,
+                   '관리자: 졸업 — ' + name + ' (Students 에서 제거)');
+  }).then(function () { return getFile(ALU); })
+    .then(function (f) {
+    var blk = peopleBlock(f.text, deg);
+    if (!blk) throw new Error('졸업생 그룹을 찾지 못했습니다: ' + deg);
+    var cards = splitCards(blk.inner);
+    cards.push('        <div class="pc">\n' +
+      '          <img class="pc__ph" src="' + esc(imgPath) + '" alt="' + esc(name) +
+      '" loading="lazy" onerror="this.classList.add(\'miss\');this.removeAttribute(\'src\')">\n' +
+      '          <h3>' + esc(spaced(name)) + '</h3>\n' +
+      hist.map(function (h) { return '          <p class="ac__h">' + esc(h.trim()) + '</p>\n'; }).join('') +
+      (thesis ? '          <p class="ac__t">' + esc(thesis) + '</p>\n' : '') +
+      '        </div>');
+    return putFile(ALU, f.text.slice(0, blk.start) + '\n' + cards.join('\n') + '\n      ' + f.text.slice(blk.end),
+                   f.sha, '관리자: 졸업 — ' + name + ' (Alumni 에 추가)');
+  }).then(function () {
+    say('m5', name + ' 졸업 처리 완료. Alumni 맨 아래에 추가되었습니다.', 'ok');
+    $('ghist').value = ''; $('gthesis').value = '';
+    loadMembers();
+  }).catch(function (e) {
+    say('m5', '실패: ' + e.message + '\n일부만 반영됐을 수 있으니 저장소 History 를 확인하세요.', 'ng');
+  }).then(function () { $('gbtn').disabled = false; });
 }
 
 /* ── 시작 ─────────────────────────────────────────────── */
