@@ -46,3 +46,31 @@
     });
   });
 })();
+
+/* 학부 인턴 모집 팝업 */
+(function () {
+  var pop = document.getElementById('pop');
+  if (!pop) return;
+  var KEY = 'ccrl_intern_popup_hidden';
+  var hidden = false;
+  try { hidden = localStorage.getItem(KEY) === '1'; } catch (e) { hidden = false; }
+
+  var close = function () {
+    pop.classList.remove('open');
+    var cb = document.getElementById('popskip');
+    if (cb && cb.checked) {
+      try { localStorage.setItem(KEY, '1'); } catch (e) {}
+    }
+  };
+
+  if (!hidden) {
+    setTimeout(function () { pop.classList.add('open'); }, 350);
+  }
+  pop.querySelectorAll('[data-close]').forEach(function (b) {
+    b.addEventListener('click', close);
+  });
+  pop.addEventListener('click', function (e) { if (e.target === pop) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && pop.classList.contains('open')) close();
+  });
+})();
